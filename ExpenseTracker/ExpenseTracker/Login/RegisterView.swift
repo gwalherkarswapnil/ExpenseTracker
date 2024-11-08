@@ -9,10 +9,11 @@ import SwiftUI
 
 struct RegisterView: View {
     var theme: Theme
-    
+    var userValidator = UserValidator()
     @State private var username = ""
     @State private var email = ""
     @State private var password = ""
+    @State private var validationMessage = ""
     
     var body: some View {
         VStack(spacing: 20) {
@@ -27,12 +28,14 @@ struct RegisterView: View {
                 .background(Color.white)
                 .cornerRadius(10)
                 .shadow(radius: 2)
+                .keyboardType(.numberPad)
             
             TextField("Email", text: $email)
                 .padding()
                 .background(Color.white)
                 .cornerRadius(10)
                 .shadow(radius: 2)
+                .keyboardType(.emailAddress)
             
             SecureField("Password", text: $password)
                 .padding()
@@ -40,8 +43,24 @@ struct RegisterView: View {
                 .cornerRadius(10)
                 .shadow(radius: 2)
             
+            if !validationMessage.isEmpty {
+                Text(validationMessage)
+                    .foregroundColor(.red)
+                    .font(.caption)
+            }
+            
             Button(action: {
-                // Register action
+                // Validate fields before registration
+                if !userValidator.isValidMobileNumber(username) {
+                    validationMessage = "Please enter a valid 10-digit mobile number"
+                } else if !userValidator.isValidEmail(email) {
+                    validationMessage = "Please enter a valid email address"
+                } else if password.count < 8 {
+                    validationMessage = "Password must be at least 8 characters long"
+                } else {
+                    validationMessage = ""
+                    // Proceed with registration action
+                }
             }) {
                 Text("Register Now")
                     .foregroundColor(.white)
@@ -50,6 +69,7 @@ struct RegisterView: View {
                     .background(theme.primaryColor)
                     .cornerRadius(10)
             }
+
             
             Spacer()
             
@@ -65,6 +85,7 @@ struct RegisterView: View {
         .background(theme.backgroundColor)
         .ignoresSafeArea()
     }
+    
 }
 
 #Preview {
