@@ -2,7 +2,7 @@
 //  RegisterView.swift
 //  ExpenseTracker
 //
-//  Created by Swapnil on 29/10/24.
+//  Created by Swapnil Gwalherkar on 29/10/24.
 //
 
 import SwiftUI
@@ -19,29 +19,25 @@ struct RegisterView: View {
         VStack(spacing: 20) {
             Spacer()
             
-            Image(systemName: "app.fill")
-                .font(.system(size: 60))
-                .foregroundColor(theme.primaryColor)
+            Image("app_icon")
+                .resizable()
+                .frame(width: 100, height: 100)
+                .clipShape(RoundedRectangle(cornerRadius: 20))
+                .shadow(radius: 20)
             
-            TextField("Mobile Number", text: $username)
-                .padding()
-                .background(Color.white)
-                .cornerRadius(10)
-                .shadow(radius: 2)
-                .keyboardType(.numberPad)
-            
-            TextField("Email", text: $email)
-                .padding()
-                .background(Color.white)
-                .cornerRadius(10)
-                .shadow(radius: 2)
-                .keyboardType(.emailAddress)
-            
-            SecureField("Password", text: $password)
-                .padding()
-                .background(Color.white)
-                .cornerRadius(10)
-                .shadow(radius: 2)
+            Group {
+                TextField("Mobile Number", text: $username)
+                TextField("Email", text: $email)
+                SecureField("Password", text: $password)
+            }
+            .padding()
+            .background(theme.backgroundColor.opacity(0.1))
+            .cornerRadius(15)
+            .shadow(color: .gray.opacity(0.3), radius: 5, x: 0, y: 5)
+            .font(.body)
+            .keyboardType(.emailAddress)
+            .textInputAutocapitalization(.never)
+            .disableAutocorrection(true)
             
             if !validationMessage.isEmpty {
                 Text(validationMessage)
@@ -50,7 +46,7 @@ struct RegisterView: View {
             }
             
             Button(action: {
-                // Validate fields before registration
+                // Validation logic here
                 if !userValidator.isValidMobileNumber(username) {
                     validationMessage = "Please enter a valid 10-digit mobile number"
                 } else if !userValidator.isValidEmail(email) {
@@ -64,12 +60,13 @@ struct RegisterView: View {
             }) {
                 Text("Register Now")
                     .foregroundColor(.white)
-                    .frame(maxWidth: .infinity)
+                    .fontWeight(.bold)
                     .padding()
-                    .background(theme.primaryColor)
-                    .cornerRadius(10)
+                    .frame(maxWidth: .infinity)
+                    .background(LinearGradient(gradient: Gradient(colors: [theme.primaryColor, theme.secondaryColor]), startPoint: .leading, endPoint: .trailing))
+                    .cornerRadius(15)
+                    .shadow(radius: 10)
             }
-
             
             Spacer()
             
@@ -80,14 +77,14 @@ struct RegisterView: View {
                 }
                 .foregroundColor(theme.primaryColor)
             }
+            .padding(.top, 10)
         }
         .padding()
-        .background(theme.backgroundColor)
-        .ignoresSafeArea()
+        .background(theme.backgroundColor.ignoresSafeArea())
     }
-    
 }
 
+
 #Preview {
-    RegisterView(theme: Theme(backgroundColor: .blue, primaryColor: .accentColor, secondaryColor: .white))
+    RegisterView(theme: Theme.orangeTheme)
 }

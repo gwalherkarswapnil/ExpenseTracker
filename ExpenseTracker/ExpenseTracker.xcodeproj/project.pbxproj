@@ -41,6 +41,7 @@
 		55D9DA1F2CDDD07200816327 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 55D9DA1E2CDDD07200816327 /* FirebaseAppCheck */; };
 		55D9DA212CDDD07200816327 /* FirebaseAppDistribution-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 55D9DA202CDDD07200816327 /* FirebaseAppDistribution-Beta */; };
 		55D9DA262CDDEA6100816327 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 55D9DA252CDDEA6100816327 /* GoogleService-Info.plist */; };
+		55D9DA282CDDFFFC00816327 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D9DA272CDDFFEF00816327 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +94,7 @@
 		55BE37E52CD8B2B800F09002 /* credentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = credentials.plist; sourceTree = "<group>"; };
 		55D9DA242CDDE71700816327 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		55D9DA252CDDEA6100816327 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		55D9DA272CDDFFEF00816327 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -243,6 +245,7 @@
 		55BE37CE2CD0D81300F09002 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				55D9DA272CDDFFEF00816327 /* Constants.swift */,
 				55BE37CF2CD0D83400F09002 /* Extensions.swift */,
 				55BE37DB2CD89D8800F09002 /* UserValidator.swift */,
 				55BE37D72CD0EE8600F09002 /* Theme.swift */,
@@ -425,6 +428,7 @@
 				55BE37B22CCF92E900F09002 /* EntryExpenseView.swift in Sources */,
 				55BE37C32CCF972100F09002 /* HomeContentView.swift in Sources */,
 				55BE37DE2CD8A38D00F09002 /* SignInWithAppleCoordinator.swift in Sources */,
+				55D9DA282CDDFFFC00816327 /* Constants.swift in Sources */,
 				55BE37BF2CCF944300F09002 /* LoginView.swift in Sources */,
 				55BE37B42CCF933B00F09002 /* DetailExpenseView.swift in Sources */,
 				55BE37D52CD0ECF600F09002 /* DashboardDetailView.swift in Sources */,
