@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyAEMrrUJAyhQFavgmtZlJn62UkSm-2sG8s</string>
+	<key>GCM_SENDER_ID</key>
+	<string>162850152927</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>swapnil.ExpenseTracker.new.unique</string>
+	<key>PROJECT_ID</key>
+	<string>expensetracker-62dec</string>
+	<key>STORAGE_BUCKET</key>
+	<string>expensetracker-62dec.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:162850152927:ios:bdfcb07c374c8a1343646a</string>
+</dict>
+</plist>

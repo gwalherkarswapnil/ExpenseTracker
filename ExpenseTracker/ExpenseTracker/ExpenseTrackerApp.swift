@@ -29,7 +29,8 @@ struct ExpenseTrackerApp: App {
       
       var body: some Scene {
           WindowGroup {
-              HomeContentView()
+              LoginView(theme: Theme(backgroundColor: .blue, primaryColor: .accentColor, secondaryColor: .white))
+              //HomeContentView()
                   .preferredColorScheme(.light)
           }
           .modelContainer(sharedModelContainer)

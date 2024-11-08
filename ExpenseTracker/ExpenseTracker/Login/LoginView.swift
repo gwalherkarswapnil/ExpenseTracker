@@ -8,9 +8,14 @@
 import SwiftUI
 struct LoginView: View {
     var theme: Theme
-    
+    @State var userValidator: UserValidator = UserValidator()
+    @State private var isSignedIn = false
+     @State private var userName = ""
+    private let coordinator = SignInWithAppleCoordinator()
+
     @State private var mobileNumber = ""
     @State private var password = ""
+    @State private var validationMessage = ""
     
     var body: some View {
         VStack(spacing: 20) {
@@ -28,6 +33,7 @@ struct LoginView: View {
                 .background(Color.white)
                 .cornerRadius(10)
                 .shadow(radius: 2)
+                .keyboardType(.numberPad)
             
             SecureField("Password", text: $password)
                 .padding()
@@ -35,8 +41,19 @@ struct LoginView: View {
                 .cornerRadius(10)
                 .shadow(radius: 2)
             
+            if !validationMessage.isEmpty {
+                Text(validationMessage)
+                    .foregroundColor(.red)
+                    .font(.caption)
+            }
+            
             Button(action: {
-                // Login action
+                if userValidator.isValidMobileNumber(mobileNumber) {
+                    // Perform login action
+                    validationMessage = "" // Clear message if valid
+                } else {
+                    validationMessage = "Please enter a valid 10-digit mobile number"
+                }
             }) {
                 Text("Login")
                     .foregroundColor(.white)
@@ -67,12 +84,10 @@ struct LoginView: View {
             }
             .padding(.top, 20)
             
-            
             HStack {
                 Text("Don’t have an account?")
                 Button("Register") {
                     // Navigate to RegisterView
-                    
                 }
                 .foregroundColor(theme.primaryColor)
             }
@@ -80,6 +95,12 @@ struct LoginView: View {
         .padding()
         .background(theme.backgroundColor)
         .ignoresSafeArea()
+        .onAppear() {
+            coordinator.onSignIn = { userID, name in
+                           self.userName = name
+                           self.isSignedIn = true
+                       }
+        }
     }
     
     // Sample actions for social login
@@ -89,11 +110,14 @@ struct LoginView: View {
     
     func handleAppleLogin() {
         // Apple login implementation
+        coordinator.handleSignInWithApple()
     }
     
     func handleGoogleLogin() {
         // Google login implementation
+        coordinator.handleGoogleLogin()
     }
+    
 }
 
 
