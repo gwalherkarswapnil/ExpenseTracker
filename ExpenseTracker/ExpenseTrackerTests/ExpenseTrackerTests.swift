@@ -2,7 +2,7 @@
 //  ExpenseTrackerTests.swift
 //  ExpenseTrackerTests
 //
-//  Created by Swapnil on 28/10/24.
+//  Created by Swapnil Gwalherkar on 28/10/24.
 //
 
 import XCTest

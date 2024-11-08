@@ -2,7 +2,7 @@
 //  Extensions.swift
 //  ExpenseTracker
 //
-//  Created by Swapnil on 29/10/24.
+//  Created by Swapnil Gwalherkar on 29/10/24.
 //
 
 import Foundation

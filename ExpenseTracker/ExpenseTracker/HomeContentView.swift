@@ -2,14 +2,17 @@
 //  ContentView.swift
 //  SwiftData ExpenseTracker
 //
-//  Created by Swapnil on 28/10/24.
+//  Created by Swapnil Gwalherkar on 28/10/24.
 //
 
 import SwiftUI
 import Charts
 
+import SwiftUI
+import Charts
 
 struct HomeContentView: View {
+    var theme: Theme = Theme.homeOrangeTheme
     @Environment(\.modelContext) var modelContext
     @State var isEntryFormPresented: Bool = false
     @State var isCategoryInputPresented: Bool = false
@@ -29,24 +32,31 @@ struct HomeContentView: View {
     
     var body: some View {
         NavigationStack {
-            List {
-                totalSpendingSection
-                expenseChartSection
-                topSpendingSection
-            }
-            .listStyle(.insetGrouped)
-            .sheet(isPresented: $isCategoryInputPresented) {
-                CategoryInputView(categoryName: $categoryName) {
-                    saveCategory()
+            ZStack {
+                theme.backgroundColor
+                    .ignoresSafeArea()
+                
+                List {
+                    totalSpendingSection
+                    expenseChartSection
+                    topSpendingSection
                 }
-            }
-            .sheet(isPresented: $isEditCategoryInputPresented) {
-                CategoryInputView(categoryName: $categoryName) {
-                    saveEditCategory()
+                .listStyle(.insetGrouped)
+                .scrollContentBackground(.hidden) // Prevents default background
+                
+                .sheet(isPresented: $isCategoryInputPresented) {
+                    CategoryInputView(categoryName: $categoryName) {
+                        saveCategory()
+                    }
                 }
-            }
-            .onAppear {
-                calculateTotalExpenses()
+                .sheet(isPresented: $isEditCategoryInputPresented) {
+                    CategoryInputView(categoryName: $categoryName) {
+                        saveEditCategory()
+                    }
+                }
+                .onAppear {
+                    calculateTotalExpenses()
+                }
             }
         }
     }
@@ -57,30 +67,39 @@ struct HomeContentView: View {
             VStack {
                 Text("Total Spending")
                     .font(.headline)
+                    .foregroundColor(.gray)
                     .multilineTextAlignment(.center)
-                Text("Rp 17.000.000")
+                
+                Text("Rs. 17.000.000")
                     .font(.largeTitle)
+                    .foregroundColor(.gray)
                     .padding(5)
                 
                 Button(action: {
                     isEntryFormPresented.toggle()
                 }) {
                     Label("Record Expense", systemImage: "square.and.pencil")
-                        .foregroundColor(.white)
+                        .foregroundColor(.black)
+                        .padding()
                         .frame(maxWidth: .infinity)
+                        .background(LinearGradient(colors: [theme.primaryColor, theme.secondaryColor], startPoint: .leading, endPoint: .trailing))
+                        .cornerRadius(15)
+                        .shadow(radius: 10)
                 }
-                .buttonStyle(.borderedProminent)
                 .sheet(isPresented: $isEntryFormPresented, onDismiss: calculateTotalExpenses) {
                     EntryExpenseView(isPresented: $isEntryFormPresented)
                 }
             }
             .padding(.vertical)
+            .background(.opacity(0.8))
+            .cornerRadius(15)
+            .shadow(radius: 5)
         }
     }
     
-    // New Expense Chart Section
+    // Expense Chart Section
     private var expenseChartSection: some View {
-        Section(header: Text("Expense Overview")) {
+        Section(header: Text("Expense Overview").foregroundColor(.gray)) {
             Chart {
                 ForEach(expensesData, id: \.category) { data in
                     BarMark(
@@ -90,30 +109,37 @@ struct HomeContentView: View {
                     .foregroundStyle(.blue)
                 }
             }
-            .frame(height: 250) // Adjust height as needed
+            .frame(height: 250)
             .padding()
+            .background(Color.white.opacity(0.1))
+            .cornerRadius(15)
+            .shadow(radius: 5)
         }
     }
     
-    // Top Spending Section (your existing code)
+    // Top Spending Section
     private var topSpendingSection: some View {
         Section {
             ForEach(0...10, id: \.self) { category in
                 NavigationLink(destination: ExpenseListView()) {
-                    VStack {
+                    VStack(alignment: .leading, spacing: 5) {
                         HStack {
-                            VStack(alignment: .leading) {
-                                Text("\(category)")
-                                    .font(.headline)
-                                Text("Rp 200.000")
-                                    .foregroundStyle(.secondary)
-                            }
-                            Spacer()
-                            Text("100 %")
+                            Text("\(category)")
                                 .font(.headline)
+                                .foregroundColor(.gray)
+                            
+                            Spacer()
+                            Text("Rs. 200.000")
+                                .font(.subheadline)
+                                .foregroundColor(.white.opacity(0.8))
                         }
                         ProgressView(value: 1)
+                            .tint(theme.secondaryColor)
                     }
+                    .padding()
+                    .background(theme.primaryColor.opacity(0.8))
+                    .cornerRadius(15)
+                    .shadow(radius: 5)
                 }
                 .swipeActions(edge: .leading, allowsFullSwipe: false) {
                     Button {
@@ -121,7 +147,7 @@ struct HomeContentView: View {
                     } label: {
                         Text("Edit")
                     }
-                    .tint(.blue)
+                    .tint(theme.primaryColor)
                 }
             }
             .onDelete(perform: delete)
@@ -129,6 +155,7 @@ struct HomeContentView: View {
             HStack {
                 Text("Top Spending")
                     .font(.headline)
+                    .foregroundColor(.gray)
                 Spacer()
                 Button(action: {
                     categoryName = ""
@@ -136,6 +163,7 @@ struct HomeContentView: View {
                 }) {
                     Label("New category", systemImage: "plus")
                         .font(.subheadline)
+                        .foregroundColor(.gray)
                 }
             }
         }
