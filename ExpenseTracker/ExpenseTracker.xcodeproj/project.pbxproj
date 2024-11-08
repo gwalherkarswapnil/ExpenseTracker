@@ -40,7 +40,7 @@
 		55D9DA1D2CDDD07200816327 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 55D9DA1C2CDDD07200816327 /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		55D9DA1F2CDDD07200816327 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 55D9DA1E2CDDD07200816327 /* FirebaseAppCheck */; };
 		55D9DA212CDDD07200816327 /* FirebaseAppDistribution-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 55D9DA202CDDD07200816327 /* FirebaseAppDistribution-Beta */; };
-		55D9DA232CDDD11A00816327 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 55D9DA222CDDD11A00816327 /* GoogleService-Info.plist */; };
+		55D9DA262CDDEA6100816327 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 55D9DA252CDDEA6100816327 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,7 +91,8 @@
 		55BE37DD2CD8A38D00F09002 /* SignInWithAppleCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleCoordinator.swift; sourceTree = "<group>"; };
 		55BE37DF2CD8A82300F09002 /* ExpenseTracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ExpenseTracker.entitlements; sourceTree = "<group>"; };
 		55BE37E52CD8B2B800F09002 /* credentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = credentials.plist; sourceTree = "<group>"; };
-		55D9DA222CDDD11A00816327 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		55D9DA242CDDE71700816327 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		55D9DA252CDDEA6100816327 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,7 +150,8 @@
 		55BE37862CCF5D0200F09002 /* ExpenseTracker */ = {
 			isa = PBXGroup;
 			children = (
-				55D9DA222CDDD11A00816327 /* GoogleService-Info.plist */,
+				55D9DA252CDDEA6100816327 /* GoogleService-Info.plist */,
+				55D9DA242CDDE71700816327 /* Info.plist */,
 				55BE37DF2CD8A82300F09002 /* ExpenseTracker.entitlements */,
 				55BE37E52CD8B2B800F09002 /* credentials.plist */,
 				55BE37872CCF5D0200F09002 /* ExpenseTrackerApp.swift */,
@@ -385,7 +387,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				55BE378F2CCF5D0400F09002 /* Preview Assets.xcassets in Resources */,
-				55D9DA232CDDD11A00816327 /* GoogleService-Info.plist in Resources */,
+				55D9DA262CDDEA6100816327 /* GoogleService-Info.plist in Resources */,
 				55BE37E62CD8B2B800F09002 /* credentials.plist in Resources */,
 				55BE378C2CCF5D0400F09002 /* Assets.xcassets in Resources */,
 			);
@@ -599,6 +601,7 @@
 				DEVELOPMENT_TEAM = B7QCMTG2HX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ExpenseTracker/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -629,6 +632,7 @@
 				DEVELOPMENT_TEAM = B7QCMTG2HX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ExpenseTracker/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
