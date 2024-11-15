@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5512D6D12CE494FA0067787D /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 5512D6D02CE494FA0067787D /* FirebaseFirestore */; };
+		5512D6D42CE495980067787D /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5512D6D32CE495980067787D /* FirestoreManager.swift */; };
+		55B6EF382CE2121F003390A6 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B6EF372CE2121F003390A6 /* CameraView.swift */; };
+		55B6EF3A2CE213BA003390A6 /* SnapShotScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B6EF392CE213BA003390A6 /* SnapShotScanView.swift */; };
 		55BE37882CCF5D0200F09002 /* ExpenseTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BE37872CCF5D0200F09002 /* ExpenseTrackerApp.swift */; };
 		55BE378C2CCF5D0400F09002 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55BE378B2CCF5D0400F09002 /* Assets.xcassets */; };
 		55BE378F2CCF5D0400F09002 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55BE378E2CCF5D0400F09002 /* Preview Assets.xcassets */; };
@@ -42,6 +46,28 @@
 		55D9DA212CDDD07200816327 /* FirebaseAppDistribution-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 55D9DA202CDDD07200816327 /* FirebaseAppDistribution-Beta */; };
 		55D9DA262CDDEA6100816327 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 55D9DA252CDDEA6100816327 /* GoogleService-Info.plist */; };
 		55D9DA282CDDFFFC00816327 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D9DA272CDDFFEF00816327 /* Constants.swift */; };
+		55D9DA3C2CDE27CE00816327 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55D9DA2B2CDE27CE00816327 /* Montserrat-Bold.ttf */; };
+		55D9DA492CDE27CE00816327 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55D9DA292CDE27CE00816327 /* Montserrat-Black.ttf */; };
+		55D9DA4A2CDE27CE00816327 /* Montserrat-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55D9DA2A2CDE27CE00816327 /* Montserrat-BlackItalic.ttf */; };
+		55D9DA4F2CDE281900816327 /* FontModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D9DA4E2CDE280A00816327 /* FontModifier.swift */; };
+		55D9DA632CDE2B2400816327 /* Roboto-CondensedItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55D9DA592CDE2B2400816327 /* Roboto-CondensedItalic.ttf */; };
+		55D9DA642CDE2B2400816327 /* NOTICE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 55D9DA502CDE2B2400816327 /* NOTICE.txt */; };
+		55D9DA652CDE2B2400816327 /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55D9DA532CDE2B2400816327 /* Roboto-BlackItalic.ttf */; };
+		55D9DA662CDE2B2400816327 /* Roboto_Specimen_Book.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 55D9DA512CDE2B2400816327 /* Roboto_Specimen_Book.pdf */; };
+		55D9DA672CDE2B2400816327 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55D9DA5B2CDE2B2400816327 /* Roboto-Light.ttf */; };
+		55D9DA682CDE2B2400816327 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55D9DA522CDE2B2400816327 /* Roboto-Black.ttf */; };
+		55D9DA692CDE2B2400816327 /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55D9DA5A2CDE2B2400816327 /* Roboto-Italic.ttf */; };
+		55D9DA6A2CDE2B2400816327 /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55D9DA612CDE2B2400816327 /* Roboto-ThinItalic.ttf */; };
+		55D9DA6B2CDE2B2400816327 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55D9DA542CDE2B2400816327 /* Roboto-Bold.ttf */; };
+		55D9DA6C2CDE2B2400816327 /* Roboto-BoldCondensedItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55D9DA562CDE2B2400816327 /* Roboto-BoldCondensedItalic.ttf */; };
+		55D9DA6D2CDE2B2400816327 /* Roboto-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55D9DA572CDE2B2400816327 /* Roboto-BoldItalic.ttf */; };
+		55D9DA6E2CDE2B2400816327 /* Roboto-BoldCondensed.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55D9DA552CDE2B2400816327 /* Roboto-BoldCondensed.ttf */; };
+		55D9DA6F2CDE2B2400816327 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55D9DA5D2CDE2B2400816327 /* Roboto-Medium.ttf */; };
+		55D9DA702CDE2B2400816327 /* Roboto-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55D9DA5C2CDE2B2400816327 /* Roboto-LightItalic.ttf */; };
+		55D9DA712CDE2B2400816327 /* Roboto-Condensed.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55D9DA582CDE2B2400816327 /* Roboto-Condensed.ttf */; };
+		55D9DA722CDE2B2400816327 /* Roboto-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55D9DA5E2CDE2B2400816327 /* Roboto-MediumItalic.ttf */; };
+		55D9DA732CDE2B2400816327 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55D9DA5F2CDE2B2400816327 /* Roboto-Regular.ttf */; };
+		55D9DA742CDE2B2400816327 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55D9DA602CDE2B2400816327 /* Roboto-Thin.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +88,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5512D6D32CE495980067787D /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
+		55B6EF372CE2121F003390A6 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		55B6EF392CE213BA003390A6 /* SnapShotScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapShotScanView.swift; sourceTree = "<group>"; };
 		55BE37842CCF5D0200F09002 /* ExpenseTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExpenseTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55BE37872CCF5D0200F09002 /* ExpenseTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTrackerApp.swift; sourceTree = "<group>"; };
 		55BE378B2CCF5D0400F09002 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -95,6 +124,28 @@
 		55D9DA242CDDE71700816327 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		55D9DA252CDDEA6100816327 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		55D9DA272CDDFFEF00816327 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		55D9DA292CDE27CE00816327 /* Montserrat-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Black.ttf"; sourceTree = "<group>"; };
+		55D9DA2A2CDE27CE00816327 /* Montserrat-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-BlackItalic.ttf"; sourceTree = "<group>"; };
+		55D9DA2B2CDE27CE00816327 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
+		55D9DA4E2CDE280A00816327 /* FontModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontModifier.swift; sourceTree = "<group>"; };
+		55D9DA502CDE2B2400816327 /* NOTICE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = NOTICE.txt; sourceTree = "<group>"; };
+		55D9DA512CDE2B2400816327 /* Roboto_Specimen_Book.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Roboto_Specimen_Book.pdf; sourceTree = "<group>"; };
+		55D9DA522CDE2B2400816327 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
+		55D9DA532CDE2B2400816327 /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BlackItalic.ttf"; sourceTree = "<group>"; };
+		55D9DA542CDE2B2400816327 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		55D9DA552CDE2B2400816327 /* Roboto-BoldCondensed.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BoldCondensed.ttf"; sourceTree = "<group>"; };
+		55D9DA562CDE2B2400816327 /* Roboto-BoldCondensedItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BoldCondensedItalic.ttf"; sourceTree = "<group>"; };
+		55D9DA572CDE2B2400816327 /* Roboto-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BoldItalic.ttf"; sourceTree = "<group>"; };
+		55D9DA582CDE2B2400816327 /* Roboto-Condensed.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Condensed.ttf"; sourceTree = "<group>"; };
+		55D9DA592CDE2B2400816327 /* Roboto-CondensedItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-CondensedItalic.ttf"; sourceTree = "<group>"; };
+		55D9DA5A2CDE2B2400816327 /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Italic.ttf"; sourceTree = "<group>"; };
+		55D9DA5B2CDE2B2400816327 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
+		55D9DA5C2CDE2B2400816327 /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-LightItalic.ttf"; sourceTree = "<group>"; };
+		55D9DA5D2CDE2B2400816327 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		55D9DA5E2CDE2B2400816327 /* Roboto-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-MediumItalic.ttf"; sourceTree = "<group>"; };
+		55D9DA5F2CDE2B2400816327 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		55D9DA602CDE2B2400816327 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
+		55D9DA612CDE2B2400816327 /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-ThinItalic.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +158,7 @@
 				55D9DA1D2CDDD07200816327 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				55BE37E42CD8B12400F09002 /* GoogleSignInSwift in Frameworks */,
 				55D9DA192CDDD07200816327 /* FirebaseAnalytics in Frameworks */,
+				5512D6D12CE494FA0067787D /* FirebaseFirestore in Frameworks */,
 				55D9DA1F2CDDD07200816327 /* FirebaseAppCheck in Frameworks */,
 				55D9DA1B2CDDD07200816327 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
 			);
@@ -129,6 +181,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5512D6D22CE4957E0067787D /* Firestore */ = {
+			isa = PBXGroup;
+			children = (
+				5512D6D32CE495980067787D /* FirestoreManager.swift */,
+			);
+			path = Firestore;
+			sourceTree = "<group>";
+		};
 		55BE377B2CCF5D0200F09002 = {
 			isa = PBXGroup;
 			children = (
@@ -156,15 +216,19 @@
 				55D9DA242CDDE71700816327 /* Info.plist */,
 				55BE37DF2CD8A82300F09002 /* ExpenseTracker.entitlements */,
 				55BE37E52CD8B2B800F09002 /* credentials.plist */,
+				5512D6D22CE4957E0067787D /* Firestore */,
+				55BE37B82CCF937200F09002 /* Models */,
+				55D9DA622CDE2B2400816327 /* roboto */,
+				55D9DA3B2CDE27CE00816327 /* montserrat */,
 				55BE37872CCF5D0200F09002 /* ExpenseTrackerApp.swift */,
 				55BE37D62CD0ED8C00F09002 /* Login */,
 				55BE37CE2CD0D81300F09002 /* Helpers */,
 				55BE37BB2CCF940200F09002 /* Components */,
-				55BE37B82CCF937200F09002 /* Models */,
 				55BE37C22CCF972100F09002 /* HomeContentView.swift */,
 				55BE37C42CCF975900F09002 /* CategoryInputView.swift */,
 				55BE37C62CCFA25300F09002 /* ExpenseComparisonView.swift */,
 				55BE37B12CCF92E900F09002 /* EntryExpenseView.swift */,
+				55B6EF392CE213BA003390A6 /* SnapShotScanView.swift */,
 				55BE37B32CCF933B00F09002 /* DetailExpenseView.swift */,
 				55BE378B2CCF5D0400F09002 /* Assets.xcassets */,
 				55BE37CD2CD0A9B000F09002 /* CategoryList */,
@@ -222,6 +286,7 @@
 			isa = PBXGroup;
 			children = (
 				55BE37BC2CCF941700F09002 /* SocialLoginButton.swift */,
+				55B6EF372CE2121F003390A6 /* CameraView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -245,6 +310,7 @@
 		55BE37CE2CD0D81300F09002 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				55D9DA4E2CDE280A00816327 /* FontModifier.swift */,
 				55D9DA272CDDFFEF00816327 /* Constants.swift */,
 				55BE37CF2CD0D83400F09002 /* Extensions.swift */,
 				55BE37DB2CD89D8800F09002 /* UserValidator.swift */,
@@ -272,6 +338,41 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		55D9DA3B2CDE27CE00816327 /* montserrat */ = {
+			isa = PBXGroup;
+			children = (
+				55D9DA292CDE27CE00816327 /* Montserrat-Black.ttf */,
+				55D9DA2A2CDE27CE00816327 /* Montserrat-BlackItalic.ttf */,
+				55D9DA2B2CDE27CE00816327 /* Montserrat-Bold.ttf */,
+			);
+			path = montserrat;
+			sourceTree = "<group>";
+		};
+		55D9DA622CDE2B2400816327 /* roboto */ = {
+			isa = PBXGroup;
+			children = (
+				55D9DA502CDE2B2400816327 /* NOTICE.txt */,
+				55D9DA512CDE2B2400816327 /* Roboto_Specimen_Book.pdf */,
+				55D9DA522CDE2B2400816327 /* Roboto-Black.ttf */,
+				55D9DA532CDE2B2400816327 /* Roboto-BlackItalic.ttf */,
+				55D9DA542CDE2B2400816327 /* Roboto-Bold.ttf */,
+				55D9DA552CDE2B2400816327 /* Roboto-BoldCondensed.ttf */,
+				55D9DA562CDE2B2400816327 /* Roboto-BoldCondensedItalic.ttf */,
+				55D9DA572CDE2B2400816327 /* Roboto-BoldItalic.ttf */,
+				55D9DA582CDE2B2400816327 /* Roboto-Condensed.ttf */,
+				55D9DA592CDE2B2400816327 /* Roboto-CondensedItalic.ttf */,
+				55D9DA5A2CDE2B2400816327 /* Roboto-Italic.ttf */,
+				55D9DA5B2CDE2B2400816327 /* Roboto-Light.ttf */,
+				55D9DA5C2CDE2B2400816327 /* Roboto-LightItalic.ttf */,
+				55D9DA5D2CDE2B2400816327 /* Roboto-Medium.ttf */,
+				55D9DA5E2CDE2B2400816327 /* Roboto-MediumItalic.ttf */,
+				55D9DA5F2CDE2B2400816327 /* Roboto-Regular.ttf */,
+				55D9DA602CDE2B2400816327 /* Roboto-Thin.ttf */,
+				55D9DA612CDE2B2400816327 /* Roboto-ThinItalic.ttf */,
+			);
+			path = roboto;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -296,6 +397,7 @@
 				55D9DA1C2CDDD07200816327 /* FirebaseAnalyticsWithoutAdIdSupport */,
 				55D9DA1E2CDDD07200816327 /* FirebaseAppCheck */,
 				55D9DA202CDDD07200816327 /* FirebaseAppDistribution-Beta */,
+				5512D6D02CE494FA0067787D /* FirebaseFirestore */,
 			);
 			productName = ExpenseTracker;
 			productReference = 55BE37842CCF5D0200F09002 /* ExpenseTracker.app */;
@@ -392,6 +494,27 @@
 				55BE378F2CCF5D0400F09002 /* Preview Assets.xcassets in Resources */,
 				55D9DA262CDDEA6100816327 /* GoogleService-Info.plist in Resources */,
 				55BE37E62CD8B2B800F09002 /* credentials.plist in Resources */,
+				55D9DA632CDE2B2400816327 /* Roboto-CondensedItalic.ttf in Resources */,
+				55D9DA642CDE2B2400816327 /* NOTICE.txt in Resources */,
+				55D9DA652CDE2B2400816327 /* Roboto-BlackItalic.ttf in Resources */,
+				55D9DA662CDE2B2400816327 /* Roboto_Specimen_Book.pdf in Resources */,
+				55D9DA672CDE2B2400816327 /* Roboto-Light.ttf in Resources */,
+				55D9DA682CDE2B2400816327 /* Roboto-Black.ttf in Resources */,
+				55D9DA692CDE2B2400816327 /* Roboto-Italic.ttf in Resources */,
+				55D9DA6A2CDE2B2400816327 /* Roboto-ThinItalic.ttf in Resources */,
+				55D9DA6B2CDE2B2400816327 /* Roboto-Bold.ttf in Resources */,
+				55D9DA6C2CDE2B2400816327 /* Roboto-BoldCondensedItalic.ttf in Resources */,
+				55D9DA6D2CDE2B2400816327 /* Roboto-BoldItalic.ttf in Resources */,
+				55D9DA6E2CDE2B2400816327 /* Roboto-BoldCondensed.ttf in Resources */,
+				55D9DA6F2CDE2B2400816327 /* Roboto-Medium.ttf in Resources */,
+				55D9DA702CDE2B2400816327 /* Roboto-LightItalic.ttf in Resources */,
+				55D9DA712CDE2B2400816327 /* Roboto-Condensed.ttf in Resources */,
+				55D9DA722CDE2B2400816327 /* Roboto-MediumItalic.ttf in Resources */,
+				55D9DA732CDE2B2400816327 /* Roboto-Regular.ttf in Resources */,
+				55D9DA742CDE2B2400816327 /* Roboto-Thin.ttf in Resources */,
+				55D9DA3C2CDE27CE00816327 /* Montserrat-Bold.ttf in Resources */,
+				55D9DA492CDE27CE00816327 /* Montserrat-Black.ttf in Resources */,
+				55D9DA4A2CDE27CE00816327 /* Montserrat-BlackItalic.ttf in Resources */,
 				55BE378C2CCF5D0400F09002 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -418,8 +541,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				55BE37BA2CCF937200F09002 /* Expense.swift in Sources */,
+				55B6EF3A2CE213BA003390A6 /* SnapShotScanView.swift in Sources */,
 				55BE37CA2CCFAB4500F09002 /* TrackingRecurringExpence.swift in Sources */,
 				55BE37DA2CD0EEA500F09002 /* RegisterView.swift in Sources */,
+				55D9DA4F2CDE281900816327 /* FontModifier.swift in Sources */,
 				55BE37DC2CD89D8800F09002 /* UserValidator.swift in Sources */,
 				55BE37BD2CCF941700F09002 /* SocialLoginButton.swift in Sources */,
 				55BE37C72CCFA25300F09002 /* ExpenseComparisonView.swift in Sources */,
@@ -431,9 +556,11 @@
 				55D9DA282CDDFFFC00816327 /* Constants.swift in Sources */,
 				55BE37BF2CCF944300F09002 /* LoginView.swift in Sources */,
 				55BE37B42CCF933B00F09002 /* DetailExpenseView.swift in Sources */,
+				5512D6D42CE495980067787D /* FirestoreManager.swift in Sources */,
 				55BE37D52CD0ECF600F09002 /* DashboardDetailView.swift in Sources */,
 				55BE37C12CCF96AB00F09002 /* ExpenseListView.swift in Sources */,
 				55BE37CC2CCFAB8200F09002 /* RecurringExpense.swift in Sources */,
+				55B6EF382CE2121F003390A6 /* CameraView.swift in Sources */,
 				55BE37C52CCF975900F09002 /* CategoryInputView.swift in Sources */,
 				55BE37D02CD0D83400F09002 /* Extensions.swift in Sources */,
 				55BE37D32CD0EAF400F09002 /* ExpenseDashBoardDetail.swift in Sources */,
@@ -788,6 +915,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		5512D6D02CE494FA0067787D /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 55D9DA172CDDD07200816327 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
 		55BE37E12CD8B12400F09002 /* GoogleSignIn */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 55BE37E02CD8B12400F09002 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
