@@ -24,7 +24,7 @@ final class Expense {
     
     // Optional relationship to a Category
     var category: Category?
-    
+    var recurringExpenseID: String? = nil
     init(amount: Double, note: String, date: Date, category: Category? = nil) {
         self.amount = amount
         self.note = note

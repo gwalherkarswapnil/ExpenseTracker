@@ -7,9 +7,11 @@
 //
 import SwiftUI
 import PhotosUI
+import VisionKit
+import SwiftUI
+import PhotosUI
 
 struct EntryExpenseView: View {
-    
     @Binding var isPresented: Bool
     
     @State private var selectedCategoryID: Int?
@@ -22,7 +24,10 @@ struct EntryExpenseView: View {
     
     // For preview
     @State private var images: [UIImage] = []
-    
+    @State private var selectedImage: UIImage?
+    @State private var isCameraPresented = false
+    @State private var isSnapshotScanPresented = false  // New state variable for SnapshotScanView
+
     var body: some View {
         NavigationStack {
             Form {
@@ -47,6 +52,16 @@ struct EntryExpenseView: View {
                     Button("Cancel") {
                         isPresented.toggle()
                     }
+                }
+            }
+            .onChange(of: selectedImage) { newImage in
+                if newImage != nil {
+                    isSnapshotScanPresented = true  // Trigger presentation when image is selected
+                }
+            }
+            .sheet(isPresented: $isSnapshotScanPresented) {
+                if let selectedImage = selectedImage {
+                    SnapshotScanView(image: selectedImage)  // Pass the selected image to SnapshotScanView
                 }
             }
         }
@@ -99,6 +114,25 @@ struct EntryExpenseView: View {
             .onChange(of: selectedPhotos) {
                 convertToImages()
             }
+            
+            // Button for opening the camera
+            Button(action: {
+                isCameraPresented = true
+            }) {
+                Label("Take a photo", systemImage: "camera")
+            }
+            .sheet(isPresented: $isCameraPresented) {
+                CameraView(selectedImage: $selectedImage)
+            }
+            
+            // Display the selected image
+            if let image = selectedImage {
+                Image(uiImage: image)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 200, height: 200)
+                    .clipShape(RoundedRectangle(cornerRadius: 20))
+            }
         }
     }
     
@@ -128,12 +162,14 @@ struct EntryExpenseView: View {
                     selectedImageData = imageData
                     if let image = UIImage(data: imageData) {
                         images.append(image)
+                        selectedImage = image  // Set selectedImage when a new image is chosen
                     }
                 }
             }
         }
     }
 }
+
 
 
 #Preview {

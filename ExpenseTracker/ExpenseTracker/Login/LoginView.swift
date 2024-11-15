@@ -18,132 +18,144 @@ struct LoginView: View {
     @State private var isLoading = false
     @State private var showPassword = false
     @State private var rememberMe = false
-    
-    var body: some View {
-        VStack(spacing: 20) {
-            Spacer()
-            
-            Text(LoginViewConstants.title)
-                .multilineTextAlignment(.center)
-                .font(.largeTitle)
-                .fontWeight(.bold)
-                .foregroundColor(.orange)
-                .accessibility(label: Text("App title"))
-            
-            Image("app_icon")
-                .resizable()
-                .frame(width: 100, height: 100)
-                .clipShape(RoundedRectangle(cornerRadius: 20))
-                .shadow(radius: 20)
-                .accessibility(hidden: true)
-            
-            TextField(LoginViewConstants.mobileNumberPlaceholder, text: $mobileNumber)
-                .padding()
-                .background(Color.white)
-                .cornerRadius(10)
-                .shadow(radius: 2)
-                .keyboardType(.numberPad)
-                .accessibility(label: Text("Mobile Number Field"))
-            
-            HStack {
-                if showPassword {
-                    TextField(LoginViewConstants.passwordPlaceholder, text: $password)
-                } else {
-                    SecureField(LoginViewConstants.passwordPlaceholder, text: $password)
-                }
-                
-                Button(action: {
-                    showPassword.toggle()
-                }) {
-                    Image(systemName: showPassword ? "eye.slash" : "eye")
-                        .foregroundColor(.gray)
-                }
-                .accessibility(label: Text(showPassword ? "Hide Password" : "Show Password"))
-            }
-            .padding()
-            .background(Color.white)
-            .cornerRadius(10)
-            .shadow(radius: 2)
-            
-            if !validationMessage.isEmpty {
-                Text(validationMessage)
-                    .foregroundColor(.red)
-                    .font(.caption)
-                    .accessibility(label: Text("Validation Message: \(validationMessage)"))
-            }
-            
-            Toggle(isOn: $rememberMe) {
-                Text(LoginViewConstants.rememberMe)
-                    .foregroundColor(.gray)
-            }
-            .padding(.horizontal)
-            .accessibility(label: Text(LoginViewConstants.rememberMeToggle))
-            
-            Button(action: {
-                handleLogin()
-            }) {
-                if isLoading {
-                    ProgressView()
-                        .progressViewStyle(CircularProgressViewStyle(tint: .white))
-                } else {
-                    Text(LoginViewConstants.loginButtonTitle)
-                        .foregroundColor(.white)
-                        .fontWeight(.bold)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .cornerRadius(15)
-                        .shadow(radius: 10)
-                }
-            }
-            .background(LinearGradient(gradient: Gradient(colors: [theme.primaryColor, theme.secondaryColor]), startPoint: .leading, endPoint: .trailing))
+    @State private var navigateToHome = false
+    @State private var navigateToRegister = false
 
-            .frame(maxWidth: .infinity)
-            .background(theme.primaryColor)
-            .cornerRadius(10)
-            .disabled(isLoading)
-            
-            Text(LoginViewConstants.forgotPassword)
-                .foregroundColor(theme.secondaryColor)
-                .font(.footnote)
-                .padding(.top, 5)
-                .onTapGesture {
-                    // Handle forgot password action
+    var body: some View {
+        NavigationStack {
+            ScrollView () {
+                VStack(spacing: 20) {
+                    Text(LoginViewConstants.title)
+                        .appFont(size: 32, weight: .bold)
+                        .foregroundColor(theme.primaryColor)
+                        .padding(.top, 50)
+                    
+                    Image("app_icon")
+                        .resizable()
+                        .frame(width: 100, height: 100)
+                        .clipShape(RoundedRectangle(cornerRadius: 20))
+                        .shadow(radius: 20)
+                        .accessibility(hidden: true)
+                    
+                    TextField(LoginViewConstants.mobileNumberPlaceholder, text: $mobileNumber)
+                        .padding()
+                        .background(Color.white)
+                        .cornerRadius(10)
+                        .shadow(radius: 2)
+                        .keyboardType(.numberPad)
+                        .appFont(size: 18)
+                    
+                    HStack {
+                        if showPassword {
+                            TextField(LoginViewConstants.passwordPlaceholder, text: $password)
+                                .appFont(size: 18)
+                        } else {
+                            SecureField(LoginViewConstants.passwordPlaceholder, text: $password)
+                                .appFont(size: 18)
+                        }
+                        
+                        Button(action: {
+                            showPassword.toggle()
+                        }) {
+                            Image(systemName: showPassword ? "eye.slash" : "eye")
+                                .foregroundColor(.gray)
+                        }
+                    }
+                    .padding()
+                    .background(Color.white)
+                    .cornerRadius(10)
+                    .shadow(radius: 2)
+                    
+                    if !validationMessage.isEmpty {
+                        Text(validationMessage)
+                            .appFont(size: 14)
+                            .foregroundColor(.red)
+                    }
+                    
+                    Toggle(isOn: $rememberMe) {
+                        Text(LoginViewConstants.rememberMe)
+                            .appFont(size: 16)
+                            .foregroundColor(.gray)
+                    }
+                    .tint(theme.primaryColor)
+                    .padding(.horizontal)
+                    
+                    Button(action: {
+                        handleLogin()
+                    }) {
+                        ZStack {
+                            LinearGradient(gradient: Gradient(colors: [theme.primaryColor, theme.secondaryColor]), startPoint: .leading, endPoint: .trailing)
+                                .cornerRadius(10)
+                                .frame(height: 50)
+                            
+                            Text(LoginViewConstants.loginButtonTitle)
+                                .appFont(size: 18, weight: .semibold)
+                                .foregroundColor(.white)
+                                .opacity(isLoading ? 0.5 : 1.0)
+                                .padding()
+                                .frame(maxWidth: .infinity)
+                            
+                            if isLoading {
+                                ProgressView()
+                                    .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                            }
+                        }
+                        .frame(height: 50)
+                        .cornerRadius(10)
+                        .shadow(radius: 10)
+                    }
+                    .disabled(isLoading)
+                    
+                    Text(LoginViewConstants.forgotPassword)
+                        .appFont(size: 16, weight: .bold)
+                        .foregroundColor(theme.secondaryColor)
+                        .padding(.top, 5)
+                    
+                    VStack(spacing: 10) {
+                        SocialLoginButton(icon: Image("logo.facebook"), text: LoginViewConstants.facebookLogin, backgroundColor: .blue) {
+                            handleFacebookLogin()
+                        }
+                        
+                        SocialLoginButton(icon: Image(systemName: "applelogo"), text: LoginViewConstants.appleLogin, backgroundColor: .black) {
+                            handleAppleLogin()
+                        }
+                        
+                        SocialLoginButton(icon: Image("logo.google"), text: LoginViewConstants.googleLogin, backgroundColor: .gray) {
+                            handleGoogleLogin()
+                        }
+                    }
+                    .padding(.top, 20)
+                    
+                    HStack {
+                        Text(LoginViewConstants.noAccountText)
+                        Button(LoginViewConstants.registerButtonTitle) {
+                            navigateToRegister = true
+                        }
+                        .foregroundColor(theme.primaryColor)
+                    }
+                    .navigationDestination(isPresented: $navigateToRegister) {
+                        RegisterView(theme: theme)
+                            .navigationBarBackButtonHidden(false)
+                    }
+                    .navigationDestination(isPresented: $navigateToHome) {
+                        HomeContentView()
+                    }
                 }
-            
-            VStack(spacing: 10) {
-                SocialLoginButton(icon: Image("logo.facebook"), text: LoginViewConstants.facebookLogin, backgroundColor: .blue) {
-                    handleFacebookLogin()
+                .padding()
+                .background(theme.backgroundColor)
+                .ignoresSafeArea()
+                .onAppear {
+                    coordinator.onSignIn = { userID, name in
+                        self.userName = name
+                        self.isSignedIn = true
+                    }
                 }
                 
-                SocialLoginButton(icon: Image(systemName: "applelogo"), text: LoginViewConstants.appleLogin, backgroundColor: .black) {
-                    handleAppleLogin()
-                }
-                
-                SocialLoginButton(icon: Image("logo.google"), text: LoginViewConstants.googleLogin, backgroundColor: .gray) {
-                    handleGoogleLogin()
-                }
             }
-            .padding(.top, 20)
-            
-            HStack {
-                Text(LoginViewConstants.noAccountText)
-                Button(LoginViewConstants.registerButtonTitle) {
-                    // Navigate to RegisterView
-                }
-                .foregroundColor(theme.primaryColor)
-            }
-        }
-        .padding()
-        .background(theme.backgroundColor)
-        .ignoresSafeArea()
-        .onAppear {
-            coordinator.onSignIn = { userID, name in
-                self.userName = name
-                self.isSignedIn = true
-            }
+            .ignoresSafeArea()
         }
     }
-    
+
     // MARK: - Helper Functions
     
     func handleLogin() {
@@ -151,28 +163,34 @@ struct LoginView: View {
         validationMessage = ""
         
         // Validate inputs
-        if !userValidator.isValidMobileNumber(mobileNumber) {
-            validationMessage = LoginViewConstants.invalidMobileMessage
-            return
-        }
+//        if !userValidator.isValidMobileNumber(mobileNumber) {
+//            validationMessage = LoginViewConstants.invalidMobileMessage
+//            return
+//        }
+//
+//        if password.isEmpty {
+//            validationMessage = "Password cannot be empty"
+//            return
+//        }
         
-        if password.isEmpty {
-            validationMessage = "Password cannot be empty"
-            return
-        }
-        
-        // Start loading
+        // Start loading with 1-second delay
         isLoading = true
         
-        // Simulate login process
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             isLoading = false
-            // Add login logic here
+            // After loading, navigate to Home View
+            navigateToHome = true
         }
     }
     
     func handleFacebookLogin() {
         // Facebook login implementation
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            isLoading = false
+            // After loading, navigate to Home View
+            navigateToHome = true
+        }
+        
     }
     
     func handleAppleLogin() {
