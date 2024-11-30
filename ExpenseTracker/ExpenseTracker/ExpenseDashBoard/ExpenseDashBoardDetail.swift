@@ -10,7 +10,7 @@ import SwiftData
 import Charts
 struct ExpenseDashBoardDetail: View {
     @Environment(\.modelContext) var modelContext
-    @Query var expenses: [Expense]  // This will fetch all expenses
+    var expenses: [Expense] = []  // This will fetch all expenses
     
     @State private var selectedPeriod: Period = .monthly
     @State private var expenseData: [ExpenseData] = []

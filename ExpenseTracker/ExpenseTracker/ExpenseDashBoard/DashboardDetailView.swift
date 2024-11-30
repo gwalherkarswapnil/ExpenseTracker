@@ -85,8 +85,5 @@ struct DashboardDetailView: View {
 
 #Preview {
     DashboardDetailView(expenses: [
-        Expense(amount: 50000, note: "Coffee with friends", date: Date()),
-        Expense(amount: 100000, note: "Groceries", date: Date().addingTimeInterval(-86400)),
-        Expense(amount: 20000, note: "Snacks", date: Date().addingTimeInterval(-172800))
     ])
 }

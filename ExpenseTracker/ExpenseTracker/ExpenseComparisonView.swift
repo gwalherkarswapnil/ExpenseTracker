@@ -14,8 +14,8 @@ import Charts
 import SwiftData
 
 struct ExpenseComparisonView: View {
-    @Environment(\.modelContext) var modelContext
-    @Query var expenses: [Expense]  // This will fetch all expenses
+   // @Environment(\.modelContext) var modelContext
+    var expenses: [Expense] = []  // This will fetch all expenses
     
     @State private var selectedPeriod: Period = .monthly
     @State private var expenseData: [ExpenseData] = []
