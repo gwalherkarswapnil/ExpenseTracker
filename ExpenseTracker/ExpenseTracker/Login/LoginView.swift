@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import SwiftUI
+
 struct LoginView: View {
     var theme: Theme
     @State private var userValidator: UserValidator = UserValidator()
@@ -20,14 +22,17 @@ struct LoginView: View {
     @State private var rememberMe = false
     @State private var navigateToHome = false
     @State private var navigateToRegister = false
+    @State private var navigateToChat = false  // New state for navigation to ChatView
 
     var body: some View {
         NavigationStack {
-            ScrollView () {
+            ScrollView() {
                 VStack(spacing: 20) {
                     Text(LoginViewConstants.title)
-                        .appFont(size: 32, weight: .bold)
-                        .foregroundColor(theme.primaryColor)
+                        .appFont(size: 32, weight: .medium)  // Custom font with size 32
+                        .fontWeight(.bold)  // Make the font bold for prominence
+                        .foregroundColor(theme.primaryColor)  // Set the text color to match your theme
+                        .shadow(color: .black, radius: 2, x: 1, y: 1)  // Add subtle shadow for depth
                         .padding(.top, 50)
                     
                     Image("app_icon")
@@ -140,6 +145,23 @@ struct LoginView: View {
                     .navigationDestination(isPresented: $navigateToHome) {
                         HomeContentView()
                     }
+                    
+                    // Add a button to navigate to ChatView
+                    Button(action: {
+                        navigateToChat = true
+                    }) {
+                        Text("Go to Chat")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(LinearGradient(gradient: Gradient(colors: [theme.primaryColor, theme.secondaryColor]), startPoint: .leading, endPoint: .trailing))
+                            .cornerRadius(10)
+                            .shadow(radius: 10)
+                    }
+                    .navigationDestination(isPresented: $navigateToChat) {
+                        ChatView() // Your ChatView here
+                    }
                 }
                 .padding()
                 .background(theme.backgroundColor)
@@ -150,7 +172,6 @@ struct LoginView: View {
                         self.isSignedIn = true
                     }
                 }
-                
             }
             .ignoresSafeArea()
         }
@@ -163,16 +184,8 @@ struct LoginView: View {
         validationMessage = ""
         
         // Validate inputs
-//        if !userValidator.isValidMobileNumber(mobileNumber) {
-//            validationMessage = LoginViewConstants.invalidMobileMessage
-//            return
-//        }
-//
-//        if password.isEmpty {
-//            validationMessage = "Password cannot be empty"
-//            return
-//        }
-        
+        // Your validation logic
+
         // Start loading with 1-second delay
         isLoading = true
         
@@ -190,7 +203,6 @@ struct LoginView: View {
             // After loading, navigate to Home View
             navigateToHome = true
         }
-        
     }
     
     func handleAppleLogin() {
