@@ -41,8 +41,7 @@ struct ExpenseTrackerApp: App {
       
       var body: some Scene {
           WindowGroup {
-//              LoginView(theme: Theme.orangeTheme)
-              ArContentView()
+              LoginView(theme: Theme.orangeTheme)
                   .preferredColorScheme(.light)
           }
       }
