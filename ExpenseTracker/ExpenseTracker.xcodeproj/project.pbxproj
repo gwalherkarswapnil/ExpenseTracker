@@ -9,6 +9,15 @@
 /* Begin PBXBuildFile section */
 		5512D6D12CE494FA0067787D /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 5512D6D02CE494FA0067787D /* FirebaseFirestore */; };
 		5512D6D42CE495980067787D /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5512D6D32CE495980067787D /* FirestoreManager.swift */; };
+		55A4909D2CFB95C900554490 /* ARBudgetPlannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A4909C2CFB95C900554490 /* ARBudgetPlannerViewController.swift */; };
+		55A490A02CFB972900554490 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A4909F2CFB972900554490 /* ChatMessage.swift */; };
+		55A490A22CFB974600554490 /* ChatBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A490A12CFB974600554490 /* ChatBubble.swift */; };
+		55A490A42CFB979500554490 /* GraphicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A490A32CFB979500554490 /* GraphicView.swift */; };
+		55A490A62CFB97B900554490 /* BarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A490A52CFB97B900554490 /* BarChartView.swift */; };
+		55A490A82CFB981600554490 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A490A72CFB981600554490 /* ChatView.swift */; };
+		55A490AC2CFB9F5100554490 /* ArContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A490AB2CFB9F5100554490 /* ArContentView.swift */; };
+		55A490D32CFBADDB00554490 /* CoreDataExpenseTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 55A490D12CFBADDB00554490 /* CoreDataExpenseTracker.xcdatamodeld */; };
+		55A490D62CFBAF8900554490 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A490D52CFBAF8900554490 /* PersistenceController.swift */; };
 		55B6EF382CE2121F003390A6 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B6EF372CE2121F003390A6 /* CameraView.swift */; };
 		55B6EF3A2CE213BA003390A6 /* SnapShotScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B6EF392CE213BA003390A6 /* SnapShotScanView.swift */; };
 		55BE37882CCF5D0200F09002 /* ExpenseTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BE37872CCF5D0200F09002 /* ExpenseTrackerApp.swift */; };
@@ -89,6 +98,15 @@
 
 /* Begin PBXFileReference section */
 		5512D6D32CE495980067787D /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
+		55A4909C2CFB95C900554490 /* ARBudgetPlannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARBudgetPlannerViewController.swift; sourceTree = "<group>"; };
+		55A4909F2CFB972900554490 /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
+		55A490A12CFB974600554490 /* ChatBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBubble.swift; sourceTree = "<group>"; };
+		55A490A32CFB979500554490 /* GraphicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphicView.swift; sourceTree = "<group>"; };
+		55A490A52CFB97B900554490 /* BarChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartView.swift; sourceTree = "<group>"; };
+		55A490A72CFB981600554490 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		55A490AB2CFB9F5100554490 /* ArContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArContentView.swift; sourceTree = "<group>"; };
+		55A490D22CFBADDB00554490 /* CoreDataExpenseTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataExpenseTracker.xcdatamodel; sourceTree = "<group>"; };
+		55A490D52CFBAF8900554490 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		55B6EF372CE2121F003390A6 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		55B6EF392CE213BA003390A6 /* SnapShotScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapShotScanView.swift; sourceTree = "<group>"; };
 		55BE37842CCF5D0200F09002 /* ExpenseTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExpenseTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -189,6 +207,36 @@
 			path = Firestore;
 			sourceTree = "<group>";
 		};
+		55A4909B2CFB958C00554490 /* Virtual Budget Planning With AR */ = {
+			isa = PBXGroup;
+			children = (
+				55A4909C2CFB95C900554490 /* ARBudgetPlannerViewController.swift */,
+				55A490AB2CFB9F5100554490 /* ArContentView.swift */,
+			);
+			path = "Virtual Budget Planning With AR";
+			sourceTree = "<group>";
+		};
+		55A4909E2CFB969B00554490 /* ChatModule */ = {
+			isa = PBXGroup;
+			children = (
+				55A4909F2CFB972900554490 /* ChatMessage.swift */,
+				55A490A12CFB974600554490 /* ChatBubble.swift */,
+				55A490A52CFB97B900554490 /* BarChartView.swift */,
+				55A490A72CFB981600554490 /* ChatView.swift */,
+				55A490A32CFB979500554490 /* GraphicView.swift */,
+			);
+			path = ChatModule;
+			sourceTree = "<group>";
+		};
+		55A490D42CFBAF7200554490 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				55A490D12CFBADDB00554490 /* CoreDataExpenseTracker.xcdatamodeld */,
+				55A490D52CFBAF8900554490 /* PersistenceController.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		55BE377B2CCF5D0200F09002 = {
 			isa = PBXGroup;
 			children = (
@@ -216,6 +264,9 @@
 				55D9DA242CDDE71700816327 /* Info.plist */,
 				55BE37DF2CD8A82300F09002 /* ExpenseTracker.entitlements */,
 				55BE37E52CD8B2B800F09002 /* credentials.plist */,
+				55A490D42CFBAF7200554490 /* CoreData */,
+				55A4909E2CFB969B00554490 /* ChatModule */,
+				55A4909B2CFB958C00554490 /* Virtual Budget Planning With AR */,
 				5512D6D22CE4957E0067787D /* Firestore */,
 				55BE37B82CCF937200F09002 /* Models */,
 				55D9DA622CDE2B2400816327 /* roboto */,
@@ -547,16 +598,24 @@
 				55D9DA4F2CDE281900816327 /* FontModifier.swift in Sources */,
 				55BE37DC2CD89D8800F09002 /* UserValidator.swift in Sources */,
 				55BE37BD2CCF941700F09002 /* SocialLoginButton.swift in Sources */,
+				55A490AC2CFB9F5100554490 /* ArContentView.swift in Sources */,
 				55BE37C72CCFA25300F09002 /* ExpenseComparisonView.swift in Sources */,
 				55BE37B92CCF937200F09002 /* Category.swift in Sources */,
+				55A490A42CFB979500554490 /* GraphicView.swift in Sources */,
+				55A490D62CFBAF8900554490 /* PersistenceController.swift in Sources */,
 				55BE37882CCF5D0200F09002 /* ExpenseTrackerApp.swift in Sources */,
 				55BE37B22CCF92E900F09002 /* EntryExpenseView.swift in Sources */,
 				55BE37C32CCF972100F09002 /* HomeContentView.swift in Sources */,
 				55BE37DE2CD8A38D00F09002 /* SignInWithAppleCoordinator.swift in Sources */,
 				55D9DA282CDDFFFC00816327 /* Constants.swift in Sources */,
 				55BE37BF2CCF944300F09002 /* LoginView.swift in Sources */,
+				55A4909D2CFB95C900554490 /* ARBudgetPlannerViewController.swift in Sources */,
+				55A490A62CFB97B900554490 /* BarChartView.swift in Sources */,
 				55BE37B42CCF933B00F09002 /* DetailExpenseView.swift in Sources */,
 				5512D6D42CE495980067787D /* FirestoreManager.swift in Sources */,
+				55A490D32CFBADDB00554490 /* CoreDataExpenseTracker.xcdatamodeld in Sources */,
+				55A490A82CFB981600554490 /* ChatView.swift in Sources */,
+				55A490A02CFB972900554490 /* ChatMessage.swift in Sources */,
 				55BE37D52CD0ECF600F09002 /* DashboardDetailView.swift in Sources */,
 				55BE37C12CCF96AB00F09002 /* ExpenseListView.swift in Sources */,
 				55BE37CC2CCFAB8200F09002 /* RecurringExpense.swift in Sources */,
@@ -565,6 +624,7 @@
 				55BE37D02CD0D83400F09002 /* Extensions.swift in Sources */,
 				55BE37D32CD0EAF400F09002 /* ExpenseDashBoardDetail.swift in Sources */,
 				55BE37D82CD0EE8600F09002 /* Theme.swift in Sources */,
+				55A490A22CFB974600554490 /* ChatBubble.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -956,6 +1016,19 @@
 			productName = "FirebaseAppDistribution-Beta";
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		55A490D12CFBADDB00554490 /* CoreDataExpenseTracker.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				55A490D22CFBADDB00554490 /* CoreDataExpenseTracker.xcdatamodel */,
+			);
+			currentVersion = 55A490D22CFBADDB00554490 /* CoreDataExpenseTracker.xcdatamodel */;
+			path = CoreDataExpenseTracker.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 55BE377C2CCF5D0200F09002 /* Project object */;
 }

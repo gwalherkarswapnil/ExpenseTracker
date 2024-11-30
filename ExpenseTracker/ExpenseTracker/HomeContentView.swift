@@ -10,12 +10,23 @@ import Charts
 import SwiftData
 
 struct HomeContentView: View {
-    @Environment(\.modelContext) var modelContext
-    @Query(sort: \Expense.date, order: .reverse) var expenses: [Expense]
-    @State private var isEntryFormPresented: Bool = false
-    @State private var totalExpenses: Double = 0
-    @State var categoryName: String?
     var theme: Theme = Theme.homeOrangeTheme
+    @Environment(\.modelContext) var modelContext
+    @State var isEntryFormPresented: Bool = false
+    @State var isCategoryInputPresented: Bool = false
+    @State var isEditCategoryInputPresented: Bool = false
+    
+    @State var categoryName: String = ""
+    @State var totalExpenses: Double = 0
+    
+    // Sample Data for Chart
+    let expensesData: [(category: String, amount: Double)] = [
+        ("Food", 5000),
+        ("Rent", 7000),
+        ("Transportation", 3000),
+        ("Entertainment", 2000),
+        ("Utilities", 1500)
+    ]
     
     var body: some View {
         NavigationStack {
@@ -29,9 +40,19 @@ struct HomeContentView: View {
                     topSpendingSection
                 }
                 .listStyle(.insetGrouped)
-                .scrollContentBackground(.hidden)
+                .scrollContentBackground(.hidden) // Prevents default background
+                
+                .sheet(isPresented: $isCategoryInputPresented) {
+                    CategoryInputView(categoryName: $categoryName) {
+                        saveCategory()
+                    }
+                }
+                .sheet(isPresented: $isEditCategoryInputPresented) {
+                    CategoryInputView(categoryName: $categoryName) {
+                        saveEditCategory()
+                    }
+                }
                 .onAppear {
-                    addSampleExpensesIfNeeded()
                     calculateTotalExpenses()
                 }
             }
@@ -45,11 +66,27 @@ struct HomeContentView: View {
                 Text("Total Spending")
                     .font(.headline)
                     .foregroundColor(.gray)
+                    .multilineTextAlignment(.center)
                 
-                Text("Rs. \(totalExpenses, specifier: "%.2f")")
+                Text("Rs. 17.000.000")
                     .font(.largeTitle)
                     .foregroundColor(.gray)
                     .padding(5)
+                
+                Button(action: {
+                    isEntryFormPresented.toggle()
+                }) {
+                    Label("Record Expense", systemImage: "square.and.pencil")
+                        .foregroundColor(.black)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(LinearGradient(colors: [theme.primaryColor, theme.secondaryColor], startPoint: .leading, endPoint: .trailing))
+                        .cornerRadius(15)
+                        .shadow(radius: 10)
+                }
+                .sheet(isPresented: $isEntryFormPresented, onDismiss: calculateTotalExpenses) {
+                    EntryExpenseView(isPresented: $isEntryFormPresented)
+                }
             }
             .padding(.vertical)
             .background(.opacity(0.8))
@@ -62,10 +99,10 @@ struct HomeContentView: View {
     private var expenseChartSection: some View {
         Section(header: Text("Expense Overview").foregroundColor(.gray)) {
             Chart {
-                ForEach(expenses, id: \.createdAt) { expense in
+                ForEach(expensesData, id: \.category) { data in
                     BarMark(
-                        x: .value("Date", expense.date, unit: .day),
-                        y: .value("Amount", expense.amount)
+                        x: .value("Category", data.category),
+                        y: .value("Amount", data.amount)
                     )
                     .foregroundStyle(.blue)
                 }
@@ -80,74 +117,72 @@ struct HomeContentView: View {
     
     // Top Spending Section
     private var topSpendingSection: some View {
-        Section(header: Text("Top Spending Categories").foregroundColor(.gray)) {
-            ForEach(expenses, id: \.createdAt) { expense in
-                HStack {
-                    Text(expense.note)
-                        .font(.headline)
-                        .foregroundColor(.gray)
-                    
-                    Spacer()
-                    
-                    Text("Rs. \(expense.amount, specifier: "%.2f")")
+        Section {
+            ForEach(0...10, id: \.self) { category in
+                NavigationLink(destination: ExpenseListView()) {
+                    VStack(alignment: .leading, spacing: 5) {
+                        HStack {
+                            Text("\(category)")
+                                .font(.headline)
+                                .foregroundColor(.gray)
+                            
+                            Spacer()
+                            Text("Rs. 200.000")
+                                .font(.subheadline)
+                                .foregroundColor(.white.opacity(0.8))
+                        }
+                        ProgressView(value: 1)
+                            .tint(theme.secondaryColor)
+                    }
+                    .padding()
+                    .background(theme.primaryColor.opacity(0.8))
+                    .cornerRadius(15)
+                    .shadow(radius: 5)
+                }
+                .swipeActions(edge: .leading, allowsFullSwipe: false) {
+                    Button {
+                        isEditCategoryInputPresented.toggle()
+                    } label: {
+                        Text("Edit")
+                    }
+                    .tint(theme.primaryColor)
+                }
+            }
+            .onDelete(perform: delete)
+        } header: {
+            HStack {
+                Text("Top Spending")
+                    .font(.headline)
+                    .foregroundColor(.gray)
+                Spacer()
+                Button(action: {
+                    categoryName = ""
+                    isCategoryInputPresented.toggle()
+                }) {
+                    Label("New category", systemImage: "plus")
                         .font(.subheadline)
-                        .foregroundColor(.white.opacity(0.8))
+                        .foregroundColor(.gray)
                 }
-                .padding()
-                .background(theme.primaryColor.opacity(0.8))
-                .cornerRadius(15)
-                .shadow(radius: 5)
             }
         }
     }
     
     // MARK: - Helper Functions
+    
     private func calculateTotalExpenses() {
-        guard ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == nil else { return }
-
-        totalExpenses = expenses.reduce(0) { $0 + $1.amount }
+        // Calculate the total expenses based on your data model
     }
-    
-    private func addSampleExpensesIfNeeded() {
-    #if DEBUG
-        if expenses.isEmpty {
-            // Add mock data for preview
-            guard ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == nil else { return }
-            if expenses.isEmpty {
-                let sampleExpenses = [
-                    Expense(amount: 5000, note: "Food", date: Date()),
-                    Expense(amount: 7000, note: "Rent", date: Date().addingTimeInterval(-86400)),
-                    Expense(amount: 3000, note: "Transportation", date: Date().addingTimeInterval(-172800)),
-                    Expense(amount: 2000, note: "Entertainment", date: Date().addingTimeInterval(-259200)),
-                    Expense(amount: 1500, note: "Utilities", date: Date().addingTimeInterval(-345600))
-                ]
-                for expense in sampleExpenses {
-                    modelContext.insert(expense)
-                }
-            }
-        }
-    #endif
-        
-    }
-
-
-    // MARK: - Helper Functions
-    
-//    private func calculateTotalExpenses() {
-//        // Calculate the total expenses based on your data model
-//    }
     
     private func delete(at offsets: IndexSet) {
         // Handle delete logic here
     }
     
     private func saveCategory() {
-        print("perform save")
-        guard let categoryName = categoryName else { return }
-        let category = Category(name: categoryName)
-        modelContext.insert(category)
-        self.categoryName = ""
-        print("saved!")
+//        print("perform save")
+//        let category = Category(name: categoryName)
+//        modelContext.insert(category)
+//        categoryName = ""
+//        print("saved!")
     }
     
     private func saveEditCategory() {

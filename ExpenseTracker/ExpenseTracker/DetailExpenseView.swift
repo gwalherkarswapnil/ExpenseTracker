@@ -49,8 +49,6 @@ struct DetailRow: View {
 
 #Preview {
     NavigationStack {
-        DetailExpenseView(expense: Expense(amount: 100,
-                                           note: "notes",
-                                           date: Date.now))
+        DetailExpenseView(expense: nil)
     }
 }

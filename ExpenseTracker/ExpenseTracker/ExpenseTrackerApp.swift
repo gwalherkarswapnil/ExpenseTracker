@@ -22,28 +22,28 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 struct ExpenseTrackerApp: App {
     // register app delegate for Firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    var sharedModelContainer: ModelContainer = {
-          let scheme = Schema([
-              // entities here
-              Expense.self,
-              Category.self
-          ])
-          
-          let modelConfiguration = ModelConfiguration(schema: scheme,
-                                                      isStoredInMemoryOnly: false)
-          do {
-              return try ModelContainer(for: scheme, configurations: modelConfiguration)
-          } catch {
-              fatalError("Could not create model container \(error)")
-          }
-      
-      }()
+//    var sharedModelContainer: ModelContainer = {
+//          let scheme = Schema([
+//              // entities here
+//              Expense.self,
+//              Category.self
+//          ])
+//          
+//          let modelConfiguration = ModelConfiguration(schema: scheme,
+//                                                      isStoredInMemoryOnly: false)
+//          do {
+//              return try ModelContainer(for: scheme, configurations: modelConfiguration)
+//          } catch {
+//              fatalError("Could not create model container \(error)")
+//          }
+//      
+//      }()
       
       var body: some Scene {
           WindowGroup {
-              LoginView(theme: Theme.orangeTheme)
+//              LoginView(theme: Theme.orangeTheme)
+              ArContentView()
                   .preferredColorScheme(.light)
           }
-          .modelContainer(sharedModelContainer)
       }
 }

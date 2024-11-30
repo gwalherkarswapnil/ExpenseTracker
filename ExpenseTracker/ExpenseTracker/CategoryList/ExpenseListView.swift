@@ -14,14 +14,6 @@ struct ExpenseListView: View {
     
     // Dummy data for expenses
     @State private var expenses: [Expense] = [
-        Expense(amount: 50000, note: "Coffee with friends", date: Date()),
-        Expense(amount: 100000, note: "Groceries", date: Date().addingTimeInterval(-86400)),
-        Expense(amount: 20000, note: "Snacks", date: Date().addingTimeInterval(-172800)),
-        Expense(amount: 20000, note: "Coke", date: Date().addingTimeInterval(-172500)),
-        Expense(amount: 20000, note: "Sandwiches", date: Date().addingTimeInterval(-172100)),
-        Expense(amount: 20000, note: "Tea", date: Date().addingTimeInterval(-172850)),
-        Expense(amount: 20000, note: "Snacks", date: Date().addingTimeInterval(-17280))
-        
     ]
     
     var body: some View {
@@ -32,11 +24,12 @@ struct ExpenseListView: View {
                 } label: {
                     HStack {
                         VStack(alignment: .leading) {
-                            Text("Rp \(expenses[index].amount, specifier: "%.0f")")
-                                .font(.headline)
+                            Text("Rs. \(expenses[index].amount, specifier: "%.0f")")
+                                .appFont(size: 16)
+
                             
                             Text(expenses[index].note)
-                                .font(.subheadline)
+                                .appFont(size: 14)
                                 .foregroundStyle(.secondary)
                         }
                         Spacer()
