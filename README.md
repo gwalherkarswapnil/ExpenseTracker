@@ -1,12 +1,12 @@
  
 
-ExpenseTracker: Expense Tracker App with SwiftUI and some ARKit Magic
+**ExpenseTracker: Expense Tracker App with SwiftUI and some ARKit Magic**
 
 Managing expenses is no longer a chore! Introducing ExpenseTracker, a Swift-based app designed to simplify personal and business expense management. With advanced features like multi-platform authentication, expense categorization, and insightful tracking & analytics, it’s your one-stop solution to financial organization.
 
 Note: Some features mentioned above, like ARKit-Based Expense Visualizations, are planned for future releases. Stay tuned for updates as I continue to enhance the app’s functionality and user experience.
 
-Key Features
+**Key Features**
 
 Authentication: Seamlessly log in or sign up via Google, Facebook, Apple, OpenID
 Expense Management: Add, edit, delete, and bulk upload expenses using receipt or bill scanning.
@@ -18,9 +18,9 @@ Phase 1: Authentication
 Goal: Build a robust and user-friendly login system.
 Authentication is the backbone of the app, ensuring secure and seamless access for users.
 
-Implementation Highlights:
+**Implementation Highlights:**
 
-Social Logins:
+**Social Logins:**
 Integrated Google, Facebook, and Apple logins using SDKs and Firebase Authentication.
 Ensured compliance with platform-specific guidelines, like Apple’s “Sign in with Apple” mandate.
 OpenID Support:
@@ -34,9 +34,9 @@ Phase 2: Expense Management
 Goal: Create a seamless workflow for managing user expenses.
 Expense management is the heart of the app, focusing on simplifying how users handle their financial data.
 
-Key Features:
+**Key Features:**
 
-Expense CRUD Operations:
+**Expense CRUD Operations:**
 Add expenses with attributes like title, amount, and type (personal/business).
 Enable swipe actions for quick edit and delete options.
 Bulk Upload via Receipt/Bill Scanning:
@@ -46,9 +46,9 @@ Category Assignment:
 Auto-categorized expenses using predefined rules or user input during entry.
 Phase 3: Tracking & Analytics
 
-Goal: Empower users with insights into their financial habits.
+**Goal: Empower users with insights into their financial habits.**
 
-Features:
+**Features:**
 
 Recurring Expense Tracking:
 Identified patterns and prompted users to set reminders for recurring expenses.
@@ -72,7 +72,7 @@ Screenshots
 
 (Include visually appealing images of your app's interface, dashboards, ARKit visualizations, and key features to make this section more dynamic.)
 
-Technologies Used
+**Technologies Used**
 
 Programming Languages: Swift, SwiftUI
 Authentication: Firebase, OpenID, TOTP
@@ -86,4 +86,4 @@ Security Challenges: Implementing robust authentication mechanisms required comp
 Optimizing Performance: Processing receipts and OCR scans efficiently was a significant technical challenge.
 Tags
 
-Swift, Expense Management, Authentication, Firebase, ARKit, Tracking & Analytics, OCR, Mobile App, iOS, Social Login, SMS OTP, OpenID
+**Swift, Expense Management, Authentication, Firebase, ARKit, Tracking & Analytics, OCR, Mobile App, iOS, Social Login, SMS OTP, OpenID**
