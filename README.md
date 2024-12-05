@@ -5,6 +5,7 @@
 Managing expenses is no longer a chore! Introducing ExpenseTracker, a Swift-based app designed to simplify personal and business expense management. With advanced features like multi-platform authentication, expense categorization, and insightful tracking & analytics, it’s your one-stop solution to financial organization.
 
 Note: Some features mentioned above, like ARKit-Based Expense Visualizations, are planned for future releases. Stay tuned for updates as I continue to enhance the app’s functionality and user experience.
+<img width="144" alt="Screenshot 2024-12-05 at 4 25 19 PM" src="https://github.com/user-attachments/assets/17a6ba48-f5cd-4260-8f82-f228b23e112b">
 
 **Key Features**
 
