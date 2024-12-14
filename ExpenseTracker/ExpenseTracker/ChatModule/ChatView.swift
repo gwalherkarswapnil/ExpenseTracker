@@ -1,19 +1,23 @@
 import SwiftUI
 
+import SwiftUI
+
 struct ChatView: View {
     var theme: Theme = Theme.orangeTheme
-
+    
     @State private var messages: [ChatMessage] = []
     @State private var messageText: String = ""
     @State private var isTyping: Bool = false
-
+    
+    private let chatGPTService = ChatGPTService()
+    
     var body: some View {
         ZStack {
             LinearGradient(gradient: Gradient(colors: [theme.primaryColor, theme.secondaryColor]),
                            startPoint: .topLeading,
                            endPoint: .bottomTrailing)
-                .edgesIgnoringSafeArea(.all)
-
+            .edgesIgnoringSafeArea(.all)
+            
             VStack {
                 ScrollView {
                     LazyVStack {
@@ -22,20 +26,20 @@ struct ChatView: View {
                                 .transition(.move(edge: message.isSentByUser ? .trailing : .leading))
                                 .padding(.vertical, 5)
                         }
-
+                        
                         if isTyping {
                             TypingIndicatorView()
                         }
                     }
                 }
-
+                
                 HStack {
                     TextField("Enter message", text: $messageText)
                         .padding()
                         .background(Color.white.opacity(0.8))
                         .cornerRadius(10)
                         .foregroundColor(.black)
-
+                    
                     Button(action: sendMessage) {
                         Text("Send")
                             .bold()
@@ -47,57 +51,41 @@ struct ChatView: View {
             }
         }
     }
-
+    
     private func sendMessage() {
         guard !messageText.isEmpty else { return }
-
+        
         // Add user message
         let newMessage = ChatMessage(text: messageText, isSentByUser: true, hasGraphic: false, graphic: nil)
         withAnimation {
             messages.append(newMessage)
         }
         messageText = ""
-
-        // Show typing indicator and auto-reply
+        
+        // Show typing indicator and fetch ChatGPT response
         isTyping = true
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.isTyping = false
-            handleAutoReply(for: newMessage.text)
+            fetchChatGPTResponse(for: newMessage.text)
         }
     }
-
-    private func handleAutoReply(for userMessage: String) {
-        let botReply: ChatMessage
-
-        if userMessage.lowercased().contains("pie chart") {
-            botReply = ChatMessage(
-                text: "Here is the pie chart for your request!",
-                isSentByUser: false,
-                hasGraphic: true,
-                graphic: .pieChart([30, 40, 20, 10])
-            )
-        } else if userMessage.lowercased().contains("monthly") || userMessage.lowercased().contains("expenses") {
-            botReply = ChatMessage(
-                text: "Here is the bar chart for your monthly expenses.",
-                isSentByUser: false,
-                hasGraphic: true,
-                graphic: .barChart([200, 400, 300, 500, 250, 450, 320])
-            )
-        } else {
-            botReply = ChatMessage(
-                text: "Sorry, I couldn't understand your request. Please try asking for a 'pie chart' or 'monthly expenses'.",
-                isSentByUser: false,
-                hasGraphic: false,
-                graphic: nil
-            )
-        }
-
-        withAnimation {
-            messages.append(botReply)
+    
+    private func fetchChatGPTResponse(for userMessage: String) {
+        chatGPTService.sendMessage(message: userMessage) { resultString in
+      
+                let botReply = ChatMessage(
+                    text: resultString ?? "",
+                    isSentByUser: false,
+                    hasGraphic: false,
+                    graphic: nil
+                )
+                    messages.append(botReply)
+                
+        
+            }
         }
     }
-}
-
+    
 struct TypingIndicatorView: View {
     @State private var dots: [Bool] = [true, false, false]
 
@@ -120,6 +108,7 @@ struct TypingIndicatorView: View {
         }
     }
 }
+
 
 #Preview {
     ChatView()
