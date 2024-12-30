@@ -7,6 +7,7 @@
 
 import Foundation
 class ChatGPTService {
+    private let apiKey = "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"
     private let url = URL(string: "https://api.openai.com/v1/completions")!
     
     private let networkManager: Networking
@@ -41,6 +42,7 @@ class ChatGPTService {
             var request = URLRequest(url: url)
             request.httpMethod = "POST"
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.setValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
             
             do {
                 request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: [])
