@@ -7,7 +7,6 @@
 
 import Foundation
 class ChatGPTService {
-    private let apiKey = ProcessInfo.processInfo.environment["OPENAI_API_KEY"] ?? ""
     private let url = URL(string: "https://api.openai.com/v1/completions")!
     
     private let networkManager: Networking
@@ -42,7 +41,6 @@ class ChatGPTService {
             var request = URLRequest(url: url)
             request.httpMethod = "POST"
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-          //  request.setValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
             
             do {
                 request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: [])
