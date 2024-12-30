@@ -201,7 +201,8 @@ struct LoginView: View {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             isLoading = false
             // After loading, navigate to Home View
-            navigateToHome = true
+           // navigateToHome = true
+            coordinator.handleFacebookLogin()
         }
     }
     

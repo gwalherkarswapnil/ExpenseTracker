@@ -7,9 +7,8 @@
 
 import SwiftUI
 import SwiftData
-
 import FirebaseCore
-
+import FacebookCore
 class AppDelegate: NSObject, UIApplicationDelegate {
   func application(_ application: UIApplication,
                    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
