@@ -42,7 +42,7 @@ class ChatGPTService {
             var request = URLRequest(url: url)
             request.httpMethod = "POST"
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.setValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
+          //  request.setValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
             
             do {
                 request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: [])
