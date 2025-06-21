@@ -8,13 +8,12 @@
 import SwiftUI
 import PhotosUI
 import VisionKit
-import SwiftUI
-import PhotosUI
+import CoreData
 
 struct EntryExpenseView: View {
     @Binding var isPresented: Bool
-    
-    @State private var selectedCategoryID: Int?
+    @State private var categories: [Category] = []
+    @State private var selectedCategory: Category?
     @State private var amount: Double = 0
     @State private var notes: String = ""
     @State private var date: Date = Date.now
@@ -44,24 +43,28 @@ struct EntryExpenseView: View {
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Save") {
                         save()
-                        isPresented.toggle()
+                        isPresented = false
                     }
+                    .disabled(amount <= 0)
                 }
                 
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel") {
-                        isPresented.toggle()
+                        isPresented = false
                     }
                 }
             }
+            .onAppear {
+                loadCategories()
+            }
             .onChange(of: selectedImage) { newImage in
                 if newImage != nil {
-                    isSnapshotScanPresented = true  // Trigger presentation when image is selected
+                    isSnapshotScanPresented = true
                 }
             }
             .sheet(isPresented: $isSnapshotScanPresented) {
                 if let selectedImage = selectedImage {
-                    SnapshotScanView(image: selectedImage)  // Pass the selected image to SnapshotScanView
+                    SnapshotScanView(image: selectedImage)
                 }
             }
         }
@@ -69,10 +72,10 @@ struct EntryExpenseView: View {
     
     private var categoryPickerSection: some View {
         Section {
-            Picker("Category", selection: $selectedCategoryID) {
-                Text("Choose category").tag(nil as Int?)
-                ForEach(0...10, id: \.self) { category in
-                    Text("\(category)").tag(category)
+            Picker("Category", selection: $selectedCategory) {
+                Text("Choose category").tag(nil as Category?)
+                ForEach(categories, id: \.self) { category in
+                    Text(category.name).tag(category as Category?)
                 }
             }
             .pickerStyle(.navigationLink)
@@ -150,7 +153,50 @@ struct EntryExpenseView: View {
     }
     
     private func save() {
-        print("saved!")
+        guard amount > 0 else { return }
+        
+        let _ = PersistenceController.shared.createExpense(
+            amount: amount,
+            note: notes,
+            date: date,
+            category: selectedCategory,
+            photo: selectedImageData
+        )
+        
+        // Reset form after saving
+        resetForm()
+    }
+    
+    private func resetForm() {
+        amount = 0
+        notes = ""
+        date = Date.now
+        selectedCategory = nil
+        selectedPhotos = []
+        selectedImageData = nil
+        images = []
+        selectedImage = nil
+    }
+    
+    private func loadCategories() {
+        categories = PersistenceController.shared.fetchCategories() ?? []
+        
+        // Create default categories if none exist
+        if categories.isEmpty {
+            createDefaultCategories()
+        }
+    }
+    
+    private func createDefaultCategories() {
+        let defaultCategories = ["Food & Dining", "Transportation", "Shopping", "Entertainment", "Bills & Utilities", "Healthcare", "Travel", "Other"]
+        
+        for categoryName in defaultCategories {
+            let context = PersistenceController.shared.container.viewContext
+            let _ = Category.createCategory(name: categoryName, context: context)
+        }
+        
+        PersistenceController.shared.saveContext()
+        categories = PersistenceController.shared.fetchCategories() ?? []
     }
     
     private func convertToImages() {

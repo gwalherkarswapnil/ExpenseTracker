@@ -9,6 +9,7 @@ import SwiftUI
 import SwiftData
 import FirebaseCore
 import FacebookCore
+import CoreData
 class AppDelegate: NSObject, UIApplicationDelegate {
   func application(_ application: UIApplication,
                    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
@@ -42,6 +43,7 @@ struct ExpenseTrackerApp: App {
           WindowGroup {
               LoginView(theme: Theme.orangeTheme)
                   .preferredColorScheme(.light)
+                  .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
           }
       }
 }

@@ -8,7 +8,7 @@
 import Foundation
 class ChatGPTService {
     private let url = URL(string: "https://api.openai.com/v1/completions")!
-    
+    let apiKey = ""
     private let networkManager: Networking
      
     // Dependency Injection

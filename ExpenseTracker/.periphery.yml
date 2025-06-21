@@ -1,0 +1,7 @@
+disable_redundant_public_analysis: true
+project: ExpenseTracker.xcodeproj
+retain_objc_accessible: true
+retain_public: true
+schemes:
+- Facebook
+skip_build: true
