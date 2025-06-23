@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CategoryInputView: View {
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.dismiss) private var dismiss
     @Binding var categoryName: String
     var onSave: () -> Void
     
@@ -20,20 +20,29 @@ struct CategoryInputView: View {
                 }
             }
             .navigationTitle("Category")
-            .navigationBarItems(leading: cancelButton, trailing: saveButton)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    cancelButton
+                }
+                ToolbarItem(placement: .confirmationAction) {
+                    saveButton
+                }
+            }
         }
     }
     
     private var cancelButton: some View {
         Button("Cancel") {
-            presentationMode.wrappedValue.dismiss()
+            dismiss()
         }
     }
     
     private var saveButton: some View {
         Button("Save") {
             onSave()
-            presentationMode.wrappedValue.dismiss()
+            dismiss()
         }
+        .disabled(categoryName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
     }
 }

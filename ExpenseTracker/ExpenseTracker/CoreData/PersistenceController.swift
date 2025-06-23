@@ -111,4 +111,40 @@ struct PersistenceController {
         saveContext()
         return expense
     }
+    
+    // Clear all data functions
+    func clearAllExpenses() {
+        let context = container.viewContext
+        let fetchRequest: NSFetchRequest<Expense> = Expense.fetchRequest()
+        
+        do {
+            let expenses = try context.fetch(fetchRequest)
+            for expense in expenses {
+                context.delete(expense)
+            }
+            saveContext()
+        } catch {
+            print("Failed to clear all expenses: \(error)")
+        }
+    }
+    
+    func clearAllCategories() {
+        let context = container.viewContext
+        let fetchRequest: NSFetchRequest<Category> = Category.fetchRequest()
+        
+        do {
+            let categories = try context.fetch(fetchRequest)
+            for category in categories {
+                context.delete(category)
+            }
+            saveContext()
+        } catch {
+            print("Failed to clear all categories: \(error)")
+        }
+    }
+    
+    func clearAllData() {
+        clearAllExpenses()
+        clearAllCategories()
+    }
 }

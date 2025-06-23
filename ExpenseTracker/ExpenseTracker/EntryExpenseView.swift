@@ -12,11 +12,14 @@ import CoreData
 
 struct EntryExpenseView: View {
     @Binding var isPresented: Bool
+    var onSave: (() -> Void)? = nil
+    
     @State private var categories: [Category] = []
     @State private var selectedCategory: Category?
     @State private var amount: Double = 0
     @State private var notes: String = ""
     @State private var date: Date = Date.now
+    @State private var showingSaveAlert = false
     
     @State private var selectedPhotos: [PhotosPickerItem] = []
     @State private var selectedImageData: Data?
@@ -42,8 +45,11 @@ struct EntryExpenseView: View {
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Save") {
-                        save()
-                        isPresented = false
+                        if save() {
+                            isPresented = false
+                        } else {
+                            showingSaveAlert = true
+                        }
                     }
                     .disabled(amount <= 0)
                 }
@@ -67,6 +73,11 @@ struct EntryExpenseView: View {
                     SnapshotScanView(image: selectedImage)
                 }
             }
+            .alert("Save Failed", isPresented: $showingSaveAlert) {
+                Button("OK") { }
+            } message: {
+                Text("Please enter a valid amount greater than 0.")
+            }
         }
     }
     
@@ -87,8 +98,15 @@ struct EntryExpenseView: View {
             HStack {
                 Text("Amount")
                 Spacer()
-                TextField("Amount:", value: $amount, format: .currency(code: "INR"))
-                    .keyboardType(.numberPad)
+                TextField("Amount", value: $amount, format: .currency(code: "INR"))
+                    .keyboardType(.decimalPad)
+                    .multilineTextAlignment(.trailing)
+            }
+        } footer: {
+            if amount <= 0 && amount != 0 {
+                Text("Amount must be greater than 0")
+                    .foregroundColor(.red)
+                    .font(.caption)
             }
         }
     }
@@ -152,19 +170,26 @@ struct EntryExpenseView: View {
         }
     }
     
-    private func save() {
-        guard amount > 0 else { return }
+    private func save() -> Bool {
+        guard amount > 0 else { return false }
         
-        let _ = PersistenceController.shared.createExpense(
-            amount: amount,
-            note: notes,
-            date: date,
-            category: selectedCategory,
-            photo: selectedImageData
-        )
-        
-        // Reset form after saving
-        resetForm()
+        do {
+            let _ = PersistenceController.shared.createExpense(
+                amount: amount,
+                note: notes,
+                date: date,
+                category: selectedCategory,
+                photo: selectedImageData
+            )
+            
+            // Reset form after saving
+            resetForm()
+            onSave?()
+            return true
+        } catch {
+            print("Failed to save expense: \(error)")
+            return false
+        }
     }
     
     private func resetForm() {

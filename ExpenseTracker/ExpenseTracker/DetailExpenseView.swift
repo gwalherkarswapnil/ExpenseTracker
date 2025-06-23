@@ -9,6 +9,7 @@ import CoreData
 
 struct DetailExpenseView: View {
     let expense: Expense
+    var onSave: (() -> Void)? = nil
     
     @State private var isEditMode = false
     @State private var editAmount: Double = 0
@@ -25,7 +26,7 @@ struct DetailExpenseView: View {
                 if isEditMode {
                     editFormContent
                 } else {
-                   // viewOnlyContent
+                    viewOnlyContent
                 }
             }
             
@@ -40,8 +41,7 @@ struct DetailExpenseView: View {
                 }
             }
         }
-//        .navigationTitle(expense.date, style: .date)
-        .navigationBarTitleDisplayMode(.large)
+        .navigationTitle("\(expense.date, style: .date)")        .navigationBarTitleDisplayMode(.large)
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 if isEditMode {
@@ -68,14 +68,18 @@ struct DetailExpenseView: View {
         }
     }
     
-//    private var viewOnlyContent: some View {
-//        Group {
-//            DetailRow(label: "Category", value: expense.category?.name ?? "No Category")
-//            DetailRow(label: "Amount", value: "₹\(expense.amount, specifier: "%.2f")")
-//            DetailRow(label: "Notes", value: expense.note.isEmpty ? "No notes" : expense.note)
-//            DetailRow(label: "Date", value: expense.date.formatted(date: .complete, time: .omitted))
-//        }
-//    }
+    private var viewOnlyContent: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            DetailRow(label: "Category",
+                     value: expense.category?.name ?? "No Category")
+          //  DetailRow(label: "Amount", value:
+            //         "₹\(expense.amount,  "%.2f")")
+            DetailRow(label: "Notes", value:
+                     expense.note.isEmpty ? "No notes" : expense.note)
+            DetailRow(label: "Date", value:
+                     expense.date.formatted(date: .complete, time: .omitted))
+        }
+    }
     
     private var editFormContent: some View {
         Group {
@@ -127,6 +131,7 @@ struct DetailExpenseView: View {
             category: editCategory
         )
         isEditMode = false
+        onSave?()
     }
     
     private func loadCategories() {

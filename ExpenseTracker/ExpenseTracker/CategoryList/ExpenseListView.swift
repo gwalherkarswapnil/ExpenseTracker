@@ -20,7 +20,9 @@ struct ExpenseListView: View {
         List {
             ForEach(expenses, id: \.self) { expense in
                 NavigationLink {
-                    DetailExpenseView(expense: expense)
+                    DetailExpenseView(expense: expense) {
+                        loadExpenses()
+                    }
                 } label: {
                     ExpenseRowView(expense: expense)
                 }
@@ -39,10 +41,9 @@ struct ExpenseListView: View {
             }
         }
         .sheet(isPresented: $showingAddExpense) {
-            EntryExpenseView(isPresented: $showingAddExpense)
-                .onDisappear {
-                    loadExpenses()
-                }
+            EntryExpenseView(isPresented: $showingAddExpense) {
+                loadExpenses()
+            }
         }
         .onAppear {
             loadExpenses()

@@ -66,6 +66,36 @@
             endingLineNumber = "53"
             landmarkName = "facebookLogin()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "A98DB1B3-FC49-4303-9872-D255F2F48B11 - dd2300d92c4c76a6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (FBSDKLoginKit.LoginResult) -&gt; Combine.AnyPublisher&lt;Swift.Optional&lt;ExpenseTracker.Account&gt;, Swift.Error&gt; in ExpenseTracker.SignInWithAppleCoordinator.facebookLogin() -&gt; ()"
+                  moduleName = "ExpenseTracker.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/swapnil/Documents/Expense_Repo/ExpenseTracker/ExpenseTracker/ExpenseTracker/Login/SignInWithAppleCoordinator.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "54"
+                  endingLineNumber = "54">
+               </Location>
+               <Location
+                  uuid = "A98DB1B3-FC49-4303-9872-D255F2F48B11 - dd2300d92c4c76a6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (FBSDKLoginKit.LoginResult) -&gt; Combine.AnyPublisher&lt;Swift.Optional&lt;ExpenseTracker.Account&gt;, Swift.Error&gt; in ExpenseTracker.SignInWithAppleCoordinator.facebookLogin() -&gt; ()"
+                  moduleName = "ExpenseTracker.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/swapnil/Documents/Expense_Repo/ExpenseTracker/ExpenseTracker/ExpenseTracker/Login/SignInWithAppleCoordinator.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "54"
+                  endingLineNumber = "54">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -82,6 +112,36 @@
             endingLineNumber = "54"
             landmarkName = "facebookLogin()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "13A507D1-0E62-43FF-9765-9205C0BF3AFF - dd2300d92c4c76a6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (FBSDKLoginKit.LoginResult) -&gt; Combine.AnyPublisher&lt;Swift.Optional&lt;ExpenseTracker.Account&gt;, Swift.Error&gt; in ExpenseTracker.SignInWithAppleCoordinator.facebookLogin() -&gt; ()"
+                  moduleName = "ExpenseTracker.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/swapnil/Documents/Expense_Repo/ExpenseTracker/ExpenseTracker/ExpenseTracker/Login/SignInWithAppleCoordinator.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "54"
+                  endingLineNumber = "54">
+               </Location>
+               <Location
+                  uuid = "13A507D1-0E62-43FF-9765-9205C0BF3AFF - dd2300d92c4c76a6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (FBSDKLoginKit.LoginResult) -&gt; Combine.AnyPublisher&lt;Swift.Optional&lt;ExpenseTracker.Account&gt;, Swift.Error&gt; in ExpenseTracker.SignInWithAppleCoordinator.facebookLogin() -&gt; ()"
+                  moduleName = "ExpenseTracker.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/swapnil/Documents/Expense_Repo/ExpenseTracker/ExpenseTracker/ExpenseTracker/Login/SignInWithAppleCoordinator.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "54"
+                  endingLineNumber = "54">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -98,6 +158,36 @@
             endingLineNumber = "52"
             landmarkName = "facebookLogin()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "FEC7DE78-D9A6-490B-9E9C-23F2C5FD5C02 - 69ff75071e647d50"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ExpenseTracker.SignInWithAppleCoordinator.facebookLogin() -&gt; ()"
+                  moduleName = "ExpenseTracker.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/swapnil/Documents/Expense_Repo/ExpenseTracker/ExpenseTracker/ExpenseTracker/Login/SignInWithAppleCoordinator.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "52"
+                  endingLineNumber = "52">
+               </Location>
+               <Location
+                  uuid = "FEC7DE78-D9A6-490B-9E9C-23F2C5FD5C02 - dd2300d92c4c7664"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (FBSDKLoginKit.LoginResult) -&gt; Combine.AnyPublisher&lt;Swift.Optional&lt;ExpenseTracker.Account&gt;, Swift.Error&gt; in ExpenseTracker.SignInWithAppleCoordinator.facebookLogin() -&gt; ()"
+                  moduleName = "ExpenseTracker.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/swapnil/Documents/Expense_Repo/ExpenseTracker/ExpenseTracker/ExpenseTracker/Login/SignInWithAppleCoordinator.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "52"
+                  endingLineNumber = "52">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -178,6 +268,82 @@
             endingLineNumber = "95"
             landmarkName = "logIn(permissions:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F80F4F36-FB7F-4665-893F-ECED3DAD8427 - 10821de27652e198"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 ((Swift.Result&lt;FBSDKLoginKit.LoginResult, Swift.Error&gt;) -&gt; ()) -&gt; () in closure #1 () -&gt; Combine.Future&lt;FBSDKLoginKit.LoginResult, Swift.Error&gt; in FBSDKLoginKit.LoginManager.logIn(permissions: Swift.Array&lt;FBSDKCoreKit.Permission&gt;) -&gt; Combine.AnyPublisher&lt;FBSDKLoginKit.LoginResult, Swift.Error&gt;"
+                  moduleName = "ExpenseTracker.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/swapnil/Documents/Expense_Repo/ExpenseTracker/ExpenseTracker/ExpenseTracker/Login/SignInWithAppleCoordinator.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95">
+               </Location>
+               <Location
+                  uuid = "F80F4F36-FB7F-4665-893F-ECED3DAD8427 - a4b9e5ce49c553cb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (FBSDKLoginKit.LoginResult) -&gt; () in closure #1 ((Swift.Result&lt;FBSDKLoginKit.LoginResult, Swift.Error&gt;) -&gt; ()) -&gt; () in closure #1 () -&gt; Combine.Future&lt;FBSDKLoginKit.LoginResult, Swift.Error&gt; in FBSDKLoginKit.LoginManager.logIn(permissions: Swift.Array&lt;FBSDKCoreKit.Permission&gt;) -&gt; Combine.AnyPublisher&lt;FBSDKLoginKit.LoginResult, Swift.Error&gt;"
+                  moduleName = "ExpenseTracker.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/swapnil/Documents/Expense_Repo/ExpenseTracker/ExpenseTracker/ExpenseTracker/Login/SignInWithAppleCoordinator.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9025E395-7DAB-424E-A213-03E88420D4E7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ExpenseTracker/HomeContentView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "9025E395-7DAB-424E-A213-03E88420D4E7 - 735a4e46128922e1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #5 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.Button&lt;SwiftUI.Text&gt;, SwiftUI.Button&lt;SwiftUI.Text&gt;, SwiftUI.Button&lt;SwiftUI.Text&gt;, SwiftUI.Button&lt;SwiftUI.Text&gt;)&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.ignoresSafeArea(_: SwiftUI.SafeAreaRegions, edges: SwiftUI.Edge.Set) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.alert&lt;&#x3c4;_0_0, &#x3c4;_0_1 where &#x3c4;_1_0: SwiftUI.View, &#x3c4;_1_1: SwiftUI.View&gt;(_: SwiftUI.LocalizedStringKey, isPresented: SwiftUI.Binding&lt;Swift.Bool&gt;, actions: () -&gt; &#x3c4;_1_0, message: () -&gt; &#x3c4;_1_1) -&gt; some&gt;&gt;.0)&gt; in closure #1 () -&gt; SwiftUI.ZStack&lt;SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.ignoresSafeArea(_: SwiftUI.SafeAreaRegions, edges: SwiftUI.Edge.Set) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.alert&lt;&#x3c4;_0_0, &#x3c4;_0_1 where &#x3c4;_1_0: SwiftUI.View, &#x3c4;_1_1: SwiftUI.View&gt;(_: SwiftUI.LocalizedStringKey, isPresented: SwiftUI.Binding&lt;Swift.Bool&gt;, actions: () -&gt; &#x3c4;_1_0, message: () -&gt; &#x3c4;_1_1) -&gt; some&gt;&gt;.0)&gt;&gt; in ExpenseTracker.HomeContentView.body.getter : some"
+                  moduleName = "ExpenseTracker.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/swapnil/Documents/Expense_Repo/ExpenseTracker/ExpenseTracker/ExpenseTracker/HomeContentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "73"
+                  endingLineNumber = "73">
+               </Location>
+               <Location
+                  uuid = "9025E395-7DAB-424E-A213-03E88420D4E7 - f3c6d07e017a908f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in closure #5 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.Button&lt;SwiftUI.Text&gt;, SwiftUI.Button&lt;SwiftUI.Text&gt;, SwiftUI.Button&lt;SwiftUI.Text&gt;, SwiftUI.Button&lt;SwiftUI.Text&gt;)&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.ignoresSafeArea(_: SwiftUI.SafeAreaRegions, edges: SwiftUI.Edge.Set) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.alert&lt;&#x3c4;_0_0, &#x3c4;_0_1 where &#x3c4;_1_0: SwiftUI.View, &#x3c4;_1_1: SwiftUI.View&gt;(_: SwiftUI.LocalizedStringKey, isPresented: SwiftUI.Binding&lt;Swift.Bool&gt;, actions: () -&gt; &#x3c4;_1_0, message: () -&gt; &#x3c4;_1_1) -&gt; some&gt;&gt;.0)&gt; in closure #1 () -&gt; SwiftUI.ZStack&lt;SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.ignoresSafeArea(_: SwiftUI.SafeAreaRegions, edges: SwiftUI.Edge.Set) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.alert&lt;&#x3c4;_0_0, &#x3c4;_0_1 where &#x3c4;_1_0: SwiftUI.View, &#x3c4;_1_1: SwiftUI.View&gt;(_: SwiftUI.LocalizedStringKey, isPresented: SwiftUI.Binding&lt;Swift.Bool&gt;, actions: () -&gt; &#x3c4;_1_0, message: () -&gt; &#x3c4;_1_1) -&gt; some&gt;&gt;.0)&gt;&gt; in ExpenseTracker.HomeContentView.body.getter : some"
+                  moduleName = "ExpenseTracker.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/swapnil/Documents/Expense_Repo/ExpenseTracker/ExpenseTracker/ExpenseTracker/HomeContentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "73"
+                  endingLineNumber = "73">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
