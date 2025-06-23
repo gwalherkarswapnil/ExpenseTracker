@@ -66,6 +66,11 @@ struct HomeContentView: View {
                         saveEditCategory()
                     }
                 }
+                .sheet(isPresented: $isEntryFormPresented) {
+                    EntryExpenseView(isPresented: $isEntryFormPresented) {
+                        loadData()
+                    }
+                }
                 .onAppear {
                     loadData()
                 }
@@ -93,6 +98,7 @@ struct HomeContentView: View {
     // Total Spending Section
     private var totalSpendingSection: some View {
         Section {
+            Group {
             VStack(spacing: 15) {
                 Text("Total Spending")
                     .font(.headline)
@@ -122,44 +128,45 @@ struct HomeContentView: View {
                         .padding(5)
                 }
                 
-                VStack(spacing: 10) {
+                VStack(spacing: 15) {
+                    // Record Expense Button
                     Button(action: {
+                        print("Record Expense button tapped")
                         isEntryFormPresented.toggle()
                     }) {
                         Label("Record Expense", systemImage: "square.and.pencil")
                             .foregroundColor(.black)
                             .padding()
-                            .frame(maxWidth: .infinity)
+                            .frame(maxWidth: .infinity, minHeight: 44)
                             .background(LinearGradient(colors: [theme.primaryColor, theme.secondaryColor], startPoint: .leading, endPoint: .trailing))
                             .cornerRadius(15)
                             .shadow(radius: 10)
                     }
-                    
+
+                    // Clear Records Button
                     if !expenses.isEmpty {
                         Button(action: {
+                            print("Clear Records button tapped")
                             showingClearAlert = true
                         }) {
                             Label("Clear Records", systemImage: "trash")
                                 .foregroundColor(.white)
                                 .padding()
-                                .frame(maxWidth: .infinity)
+                                .frame(maxWidth: .infinity, minHeight: 44)
                                 .background(Color.red)
                                 .cornerRadius(15)
                                 .shadow(radius: 5)
                         }
                     }
                 }
-                
-                .sheet(isPresented: $isEntryFormPresented) {
-                    EntryExpenseView(isPresented: $isEntryFormPresented) {
-                        loadData()
-                    }
-                }
+
             }
             .padding(.vertical)
             .background(.opacity(0.8))
             .cornerRadius(15)
             .shadow(radius: 5)
+            }
+            .listRowInsets(EdgeInsets())
         }
     }
     
