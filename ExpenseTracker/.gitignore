@@ -5,3 +5,5 @@ SourcePackages/
 *.xcodeproj/project.xcworkspace/
 *.xcuserdata
 ExpenseTracker/DerivedData/
+ExpenseTracker/DerivedData/
+ExpenseTracker/SourcePackages/
