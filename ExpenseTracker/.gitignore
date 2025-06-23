@@ -1,0 +1,6 @@
+# Xcode build and cache
+DerivedData/
+SourcePackages/
+*.xcworkspace
+*.xcodeproj/project.xcworkspace/
+*.xcuserdata

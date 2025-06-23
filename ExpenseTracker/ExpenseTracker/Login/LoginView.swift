@@ -27,153 +27,204 @@ struct LoginView: View {
     var body: some View {
         NavigationStack {
             ScrollView() {
-                VStack(spacing: 20) {
-                    Text(LoginViewConstants.title)
-                        .appFont(size: 32, weight: .medium)  // Custom font with size 32
-                        .fontWeight(.bold)  // Make the font bold for prominence
-                        .foregroundColor(theme.primaryColor)  // Set the text color to match your theme
-                        .shadow(color: .black, radius: 2, x: 1, y: 1)  // Add subtle shadow for depth
-                        .padding(.top, 50)
+                VStack(spacing: 16) {
+                    // Header Section
+                    VStack(spacing: 12) {
+                  
+                        Text(LoginViewConstants.title)
+                            .appFont(size: 24, weight: .medium)
+                            .fontWeight(.bold)
+                            .foregroundColor(.white)
+                            .shadow(color: .black.opacity(0.2), radius: 1, x: 0, y: 1)
+                        
+                        Image("app_icon")
+                            .resizable()
+                            .frame(width: 80, height: 80)
+                            .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+                            .shadow(color: .black.opacity(0.2), radius: 8, x: 0, y: 4)
+                            .accessibility(hidden: true)
+                    }
+                    .padding(.top, 30)
                     
-                    Image("app_icon")
-                        .resizable()
-                        .frame(width: 100, height: 100)
-                        .clipShape(RoundedRectangle(cornerRadius: 20))
-                        .shadow(radius: 20)
-                        .accessibility(hidden: true)
-                    
-                    TextField(LoginViewConstants.mobileNumberPlaceholder, text: $mobileNumber)
-                        .padding()
-                        .background(Color.white)
-                        .cornerRadius(10)
-                        .shadow(radius: 2)
-                        .keyboardType(.numberPad)
-                        .appFont(size: 18)
-                    
-                    HStack {
-                        if showPassword {
-                            TextField(LoginViewConstants.passwordPlaceholder, text: $password)
-                                .appFont(size: 18)
-                        } else {
-                            SecureField(LoginViewConstants.passwordPlaceholder, text: $password)
-                                .appFont(size: 18)
+                    // Login Form Card
+                    VStack(spacing: 16) {
+                        // Input Fields
+                        VStack(spacing: 12) {
+                            TextField(LoginViewConstants.mobileNumberPlaceholder, text: $mobileNumber)
+                                .padding(.horizontal, 16)
+                                .padding(.vertical, 12)
+                                .background(Color(.systemGray6))
+                                .cornerRadius(12)
+                                .keyboardType(.numberPad)
+                                .appFont(size: 16)
+                            
+                            HStack {
+                                if showPassword {
+                                    TextField(LoginViewConstants.passwordPlaceholder, text: $password)
+                                        .appFont(size: 16)
+                                } else {
+                                    SecureField(LoginViewConstants.passwordPlaceholder, text: $password)
+                                        .appFont(size: 16)
+                                }
+                                
+                                Button(action: {
+                                    showPassword.toggle()
+                                }) {
+                                    Image(systemName: showPassword ? "eye.slash" : "eye")
+                                        .foregroundColor(.gray)
+                                        .font(.subheadline)
+                                }
+                            }
+                            .padding(.horizontal, 16)
+                            .padding(.vertical, 12)
+                            .background(Color(.systemGray6))
+                            .cornerRadius(12)
+                        }
+                        
+                        if !validationMessage.isEmpty {
+                            Text(validationMessage)
+                                .appFont(size: 12)
+                                .foregroundColor(.red)
+                        }
+                        
+                        HStack {
+                            Toggle(isOn: $rememberMe) {
+                                Text(LoginViewConstants.rememberMe)
+                                    .appFont(size: 14)
+                                    .foregroundColor(.secondary)
+                            }
+                            .tint(theme.primaryColor)
                         }
                         
                         Button(action: {
-                            showPassword.toggle()
+                            handleLogin()
                         }) {
-                            Image(systemName: showPassword ? "eye.slash" : "eye")
-                                .foregroundColor(.gray)
-                        }
-                    }
-                    .padding()
-                    .background(Color.white)
-                    .cornerRadius(10)
-                    .shadow(radius: 2)
-                    
-                    if !validationMessage.isEmpty {
-                        Text(validationMessage)
-                            .appFont(size: 14)
-                            .foregroundColor(.red)
-                    }
-                    
-                    Toggle(isOn: $rememberMe) {
-                        Text(LoginViewConstants.rememberMe)
-                            .appFont(size: 16)
-                            .foregroundColor(.gray)
-                    }
-                    .tint(theme.primaryColor)
-                    .padding(.horizontal)
-                    
-                    Button(action: {
-                        handleLogin()
-                    }) {
-                        ZStack {
-                            LinearGradient(gradient: Gradient(colors: [theme.primaryColor, theme.secondaryColor]), startPoint: .leading, endPoint: .trailing)
-                                .cornerRadius(10)
-                                .frame(height: 50)
-                            
-                            Text(LoginViewConstants.loginButtonTitle)
-                                .appFont(size: 18, weight: .semibold)
-                                .foregroundColor(.white)
-                                .opacity(isLoading ? 0.5 : 1.0)
-                                .padding()
-                                .frame(maxWidth: .infinity)
-                            
-                            if isLoading {
-                                ProgressView()
-                                    .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                            ZStack {
+                                LinearGradient(
+                                    gradient: Gradient(colors: [theme.primaryColor, theme.secondaryColor]), 
+                                    startPoint: .leading, 
+                                    endPoint: .trailing
+                                )
+                                .cornerRadius(12)
+                                .frame(height: 44)
+                                
+                                Text(LoginViewConstants.loginButtonTitle)
+                                    .appFont(size: 16, weight: .semibold)
+                                    .foregroundColor(.white)
+                                    .opacity(isLoading ? 0.5 : 1.0)
+                                
+                                if isLoading {
+                                    ProgressView()
+                                        .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                                        .scaleEffect(0.8)
+                                }
                             }
+                            .frame(height: 44)
+                            .shadow(color: theme.primaryColor.opacity(0.3), radius: 4, x: 0, y: 2)
                         }
-                        .frame(height: 50)
-                        .cornerRadius(10)
-                        .shadow(radius: 10)
+                        .disabled(isLoading)
+                        
+                        Button(action: {
+                            // Handle forgot password
+                        }) {
+                            Text(LoginViewConstants.forgotPassword)
+                                .appFont(size: 14, weight: .medium)
+                                .foregroundColor(theme.secondaryColor)
+                        }
+                        .padding(.top, 4)
                     }
-                    .disabled(isLoading)
+                    .padding(20)
+                    .background(Color(.systemBackground))
+                    .cornerRadius(16)
+                    .shadow(color: .black.opacity(0.1), radius: 8, x: 0, y: 4)
+                    .padding(.horizontal, 16)
                     
-                    Text(LoginViewConstants.forgotPassword)
-                        .appFont(size: 16, weight: .bold)
-                        .foregroundColor(theme.secondaryColor)
-                        .padding(.top, 5)
-                    
-                    VStack(spacing: 10) {
-                        SocialLoginButton(icon: Image("logo.facebook"), text: LoginViewConstants.facebookLogin, backgroundColor: .blue) {
+                    // Social Login Section
+                    VStack(spacing: 8) {
+                        Text("or continue with")
+                            .appFont(size: 14)
+                            .foregroundColor(.secondary)
+                            .padding(.bottom, 4)
+                        
+                        CompactSocialLoginButton(icon: Image("logo.facebook"), text: "Facebook", color: .blue) {
                             handleFacebookLogin()
                         }
                         
-                        SocialLoginButton(icon: Image(systemName: "applelogo"), text: LoginViewConstants.appleLogin, backgroundColor: .black) {
+                        CompactSocialLoginButton(icon: Image(systemName: "applelogo"), text: "Apple", color: .black) {
                             handleAppleLogin()
                         }
                         
-                        SocialLoginButton(icon: Image("logo.google"), text: LoginViewConstants.googleLogin, backgroundColor: .gray) {
+                        CompactSocialLoginButton(icon: Image("logo.google"), text: "Google", color: .gray) {
                             handleGoogleLogin()
                         }
                     }
-                    .padding(.top, 20)
+                    .padding(.horizontal, 16)
+                    .padding(.top, 12)
                     
-                    HStack {
+                    // Bottom Navigation
+                    HStack(spacing: 4) {
                         Text(LoginViewConstants.noAccountText)
+                            .appFont(size: 14)
+                            .foregroundColor(.secondary)
+                        
                         Button(LoginViewConstants.registerButtonTitle) {
                             navigateToRegister = true
                         }
+                        .appFont(size: 14, weight: .semibold)
                         .foregroundColor(theme.primaryColor)
                     }
-                    .navigationDestination(isPresented: $navigateToRegister) {
-                        RegisterView(theme: theme)
-                            .navigationBarBackButtonHidden(false)
-                    }
-                    .navigationDestination(isPresented: $navigateToHome) {
-                        HomeContentView()
-                    }
+                    .padding(.top, 16)
                     
-                    // Add a button to navigate to ChatView
+                    // Debug Chat Button (remove in production)
                     Button(action: {
                         navigateToChat = true
                     }) {
                         Text("Go to Chat")
-                            .font(.headline)
+                            .appFont(size: 14, weight: .medium)
                             .foregroundColor(.white)
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(LinearGradient(gradient: Gradient(colors: [theme.primaryColor, theme.secondaryColor]), startPoint: .leading, endPoint: .trailing))
-                            .cornerRadius(10)
-                            .shadow(radius: 10)
+                            .padding(.horizontal, 16)
+                            .padding(.vertical, 8)
+                            .background(
+                                LinearGradient(
+                                    gradient: Gradient(colors: [theme.primaryColor, theme.secondaryColor]), 
+                                    startPoint: .leading, 
+                                    endPoint: .trailing
+                                )
+                            )
+                            .cornerRadius(8)
+                            .shadow(color: theme.primaryColor.opacity(0.3), radius: 3, x: 0, y: 1)
                     }
-                    .navigationDestination(isPresented: $navigateToChat) {
-                        ChatView() // Your ChatView here
-                    }
+                    .padding(.top, 8)
                 }
-                .padding()
-                .background(theme.backgroundColor)
-                .ignoresSafeArea()
-                .onAppear {
-                    coordinator.onSignIn = { userID, name in
-                        self.userName = name
-                        self.isSignedIn = true
-                    }
+                .padding(.horizontal, 16)
+                .padding(.bottom, 20)
+                .padding(.top, 58)
+
+            }
+            .background(
+                LinearGradient(
+                    colors: [theme.primaryColor, theme.secondaryColor, theme.backgroundColor],
+                    startPoint: .top,
+                    endPoint: .bottom
+                )
+            )
+            .ignoresSafeArea()
+            .navigationDestination(isPresented: $navigateToRegister) {
+                RegisterView(theme: theme)
+                    .navigationBarBackButtonHidden(false)
+            }
+            .navigationDestination(isPresented: $navigateToHome) {
+                HomeContentView()
+            }
+            .navigationDestination(isPresented: $navigateToChat) {
+                ChatView()
+            }
+            .onAppear {
+                coordinator.onSignIn = { userID, name in
+                    self.userName = name
+                    self.isSignedIn = true
                 }
             }
-            .ignoresSafeArea()
         }
     }
 
@@ -217,6 +268,38 @@ struct LoginView: View {
     }
 }
 
+// MARK: - Compact Social Login Button Component
+struct CompactSocialLoginButton: View {
+    let icon: Image
+    let text: String
+    let color: Color
+    let action: () -> Void
+    
+    var body: some View {
+        Button(action: action) {
+            HStack(spacing: 12) {
+                icon
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 18, height: 18)
+                    .foregroundColor(.white)
+                
+                Text(text)
+                    .font(.subheadline)
+                    .fontWeight(.medium)
+                    .foregroundColor(.white)
+                
+                Spacer()
+            }
+            .padding(.horizontal, 16)
+            .padding(.vertical, 12)
+            .background(color)
+            .cornerRadius(12)
+            .shadow(color: color.opacity(0.3), radius: 3, x: 0, y: 1)
+        }
+        .buttonStyle(PlainButtonStyle())
+    }
+}
 
 #Preview {
     LoginView(theme: Theme.orangeTheme)
